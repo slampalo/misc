@@ -445,11 +445,19 @@ done
 
 ## **Git**
 
-Source control
-
-- Centralised
-- De-centralised
+Version control systems
+- Centralised version control system
+  - Subversion(SVN)
+  - Concurrent Version System(CVS)
+  <!-- keywords: hierarchical models -->
+- Distributed version control system
   - Git
+  - Mercurial
+  - Bazaar 
+  - Darcs
+
+- Delta-based version control
+- Snapshot-based version control
 
 What is Git?
 
