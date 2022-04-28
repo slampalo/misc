@@ -172,7 +172,7 @@ how color profile and understanding history is super helpful -->
 `chmod MODE FILE_NAME` = Change the permission of files or directory
 
 > Mode can be symbolic or absolute, and absolute mode would be used for the demonstration. Know more about mode, see article on chmod under header "3." in References.  
-> Absolute mode consists of 3 integers and each position represents the permission for Owner, Group, Others respectively.
+> Absolute mode consists of 3 integers and each position represents the permission for User, Group, Others respectively.
 > There are three kinds of permissions and each is represented by a positive integer:
 >
 > - read = 4
@@ -181,12 +181,13 @@ how color profile and understanding history is super helpful -->
 
 > Let say we want to modify the permissions of a file named `TEST_FILE` such that it can be
 >
-> - read (4), written (2), executed (1) by the Owner;
+> - read (4), written (2), executed (1) by the User;
 > - read (4) and written (2) by the Group;
 > - read (4) by Others,
->   its mode would be 7 (Owner) 6 (Group) 4 (Others),  
+>   its mode would be 7 (User) 6 (Group) 4 (Others),  
 >   and here is the command: `chmod 764 TEST_FILE`
 >   type `stat TEST_FILE`and you should see (0764/-rwxrw-r--) at the Access field
+>   (In fact, symbolic mode is simple. As shown, -rwxrw-r-- is the mode of the TEST_FILE in the symbolic format. The first position is the type of the file, then we can separate the remaining into three groups. The first group represents the permission for the User, the second for the Group, and the third for the Others. The first position of each group is the permission to read (r) that file , the second the permission to write (w), the third the permission to execute (x).)
 
 `echo "CONTENT"` = Print content to standard output (terminal by default)
 - `echo "CONTENT" > FILE` Write content to file
@@ -456,20 +457,52 @@ Version control systems
   - Bazaar 
   - Darcs
 
+What is Git?
 - Delta-based version control
 - Snapshot-based version control
 
-What is Git?
+Why Github?
+
+### **_Connect Github with SSH_**
+
+
+
+### **_Set up_**
+
+`git config [OPTIONS] [KEY] [VALUE]` = Git configuration
+> Setting up your profile is important because git have to record all the information of every single changes including WHO making the changes
+> - `git config --global user.name YOUR_NAME` = Set your user name
+> - `git config --global user.email YOUR_EMAIL` = Set your email
+>
+> You may also change the default branch name for the git repository whenever you create it locally
+> - `git config --global init.defaultBranch main` = Set the default branch name
+- `--global` = Global git config
+- `-l` = List all config variables and values
+   - `--name-only` = Show variables only
+   - `--show-origin` = Show the path of the config file of all variables used in the git repository
+
+
+### **__**
 
 `git clone`
-`git fetch`
+
 `git pull`
+
+`git fetch`
+
 `git diff`
+
 `git add`
+
 `git commit`
+
 `git push`
+
 `git branch`
+
 `git checkout`
+
+`git remote add`
 
 ---
 
