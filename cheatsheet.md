@@ -26,17 +26,16 @@
 
 1.  What is terminal and shell?
 
-    - Terminal: an Interface to interact with the kernel.
+     Terminal: an Interface to interact with the kernel, basically, it is a program that receive the input from and display the output to user.
     <!-- Kernel: the heart of the OS helping software to communicate with hardware -->
-    - Shell: Pass the command on to the operating system for execution
+    - Shell: a program that pass the command on to the operating system for execution
 
 2.  What is zsh?
-
     - based on bash (bourne again shell)
-    - Also, it is the default shell on mac.
+    - the default shell on mac.
 
 3.  Why zsh?
-    - Fit the POSIX (Portable Operating System Interface) standard, so the portability of programs to different UNIX variants is guaranteed.
+    - it fits the POSIX (Portable Operating System Interface) standard, the portability of programs to different UNIX variants is guaranteed.
     - more interactive
     - more plugins (Oh-my-zsh has a large community of contributors and users, you may find a bunch of useful tools in it.)
 
@@ -44,19 +43,18 @@
 
 > **NOTES**
 >
-> 1.  For the sake of consistency, here is the structure of commands in this cheat sheet: `command [OPTIONS] PARAMETER`
+> 1. For the sake of consistency, here is the structure of commands in this cheat sheet: 
+>     - `command [OPTIONS] PARAMETER`
+>       - Commands are indicated in lowercase.
+>       - Parameters are indicated in uppercase.
+>       - Parameters inside square brackets "[ ]" are optional.
 >
->     - Commands are indicated in lowercase.
->     - Parameters are indicated in uppercase.
->     - Parameters inside square brackets "[ ]" are optional.
->
-> 2.  You may know more by typing `command --help` or `man command`
->
+> 2. You shall know more about the command by typing `command --help` or `man command`
 >     - for example:
 >       - `useradd --help` or `man useradd` displays the user manual of command `useradd`
 >       - `man echo` for the user manual of command echo
 >
-> 3.  Most of the command accepts compound options
+> 3. Most of the zsh command accepts compound options
 >     - for example: `ls -alt` combines three options which are `-a (list all including hidden entries )`, `-l (view in long listing format)` and `-t (sort by time)`.
 
 ---
@@ -67,19 +65,17 @@
 how color profile and understanding history is super helpful -->
 
 1.  Theme
-
     - Oh-my-zsh: https://github.com/ohmyzsh/ohmyzsh
 
 > Install oh-my-zsh:
->
-> - Type in the terminal (make sure it is using the z shell): `sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)
+> - Type in the terminal (make sure it is using the z shell): `sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)`
+> 
 > Change the theme of your z shell (after installing oh-my-zsh):
->
 > 1.  copy the name of the theme found here: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 > 2.  open file: `~/.zshrc` and paste the name of the theme to the variable `ZSH_THEME`
 >     Right at the moment, the author is using the theme "alien": https://github.com/eendroroy/alien (let's follow the guideline and customise, that's fuuuuuuuuuun! )
 
-2.  Plugins (More plugins: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins)
+2.  Plugins (For more plugins: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins)
 
     - dirhistory: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dirhistory
     - git: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
@@ -93,7 +89,7 @@ how color profile and understanding history is super helpful -->
 
     > Create your own alias:
     >
-    > 1. `nano ~/.zshrc`
+    > 1. `nano ~/.zshrc` (nano is a terminal editor, you are free to learn or use others like vim, neovim, emacs)
     > 2. add: `alias ts="echo 'this is my first alias'"`
     > 3. cmd + x to leave and save the changes
     > 4. type `source ~/.zshrc` to reload the profile
@@ -157,7 +153,11 @@ how color profile and understanding history is super helpful -->
 
 `touch NEW_FILE` = Create new file
 
-`cp FILE DIRECTORY` = Copy file to directory
+`cp SOURCE DESTINATION` = Copy source(s) to destination
+- `-r` = Copy recursively (used when the source is a directory)
+- `-v` = Verbose mode, display process
+
+`clipcopy FILE` = Copy a file's contents to clipboard
 
 `cat FILE` = Print the content of file
 - `cat > FILE` Write the content from standard input to the file (cmd + D to leave standard input and make changes to the file)
@@ -183,11 +183,11 @@ how color profile and understanding history is super helpful -->
 >
 > - read (4), written (2), executed (1) by the User;
 > - read (4) and written (2) by the Group;
-> - read (4) by Others,
->   its mode would be 7 (User) 6 (Group) 4 (Others),  
->   and here is the command: `chmod 764 TEST_FILE`
->   type `stat TEST_FILE`and you should see (0764/-rwxrw-r--) at the Access field
->   (In fact, symbolic mode is simple. As shown, -rwxrw-r-- is the mode of the TEST_FILE in the symbolic format. The first position is the type of the file, then we can separate the remaining into three groups. The first group represents the permission for the User, the second for the Group, and the third for the Others. The first position of each group is the permission to read (r) that file , the second the permission to write (w), the third the permission to execute (x).)
+> - read (4) by Others.
+> 
+> Then its mode would be 7 (User) 6 (Group) 4 (Others) and here is the command: `chmod 764 TEST_FILE`.
+> Type `stat TEST_FILE`and you should see (0764/-rwxrw-r--) at the Access field
+> (In fact, symbolic mode is simple. As shown, -rwxrw-r-- is the mode of the TEST_FILE in the symbolic format. The first position is the type of the file, then we can separate the remaining into three groups. The first group represents the permission for the User, the second for the Group, and the third for the Others. The first position of each group is the permission to read (r) that file , the second the permission to write (w), the third the permission to execute (x).)
 
 `echo "CONTENT"` = Print content to standard output (terminal by default)
 - `echo "CONTENT" > FILE` Write content to file
@@ -446,28 +446,37 @@ done
 
 ## **Git**
 
-Version control systems
-- Centralised version control system
-  - Subversion(SVN)
-  - Concurrent Version System(CVS)
-  <!-- keywords: hierarchical models -->
-- Distributed version control system
-  - Git
-  - Mercurial
-  - Bazaar 
-  - Darcs
 
 What is Git?
+- Distributed version control system
+> Two types of version control systems: Centralised version control system vs Distributed version control system
+
 - Delta-based version control
-- Snapshot-based version control
+> Delta-based version control vs Snapshot-based version control
 
-Why Github?
+> **Connect Github with SSH**
+> 1. Generate SSH key
+>     - Open terminal and type `ssh-keygen`
+>     - set the path to store the keys. for example: /home/USERNAME/.ssh/github_paloit
+>     - set passphrase (or just press enter to leave it blank)
+>     - the file with .pub extension is the public key and the one without is the private key 
+> 2. Copy the public key 
+>     - `cd ~/.ssh`
+>     - `clipcopy github_paloit.pub`
+> 3. Add the public key to your github account
+>     - direct to https://www.github.com and login your account
+>     - open the user dropdown menu by clicking your profile pic at the top-right corner
+>     - select "Settings" and go to "SSH and GSP keys" under the "Access" header 
+>     - click "New SSH key" button, then input the "Title" of the key (as always, it should be meaningful) and paste the copied public key to the "Key" field
+> 4. 
+>     - open `config` file (create if not exists) and add the following:   
+```
+     Host github.com  
+        IdentityFile ~/.ssh/github_paloit
+```
 
-### **_Connect Github with SSH_**
 
-
-
-### **_Set up_**
+### **_Git configuration_**
 
 `git config [OPTIONS] [KEY] [VALUE]` = Git configuration
 > Setting up your profile is important because git have to record all the information of every single changes including WHO making the changes
@@ -481,39 +490,115 @@ Why Github?
    - `--name-only` = Show variables only
    - `--show-origin` = Show the path of the config file of all variables used in the git repository
 
+### **_Git repository_**
 
-### **__**
+`git init` =  Create a .git subdirectory and now your directory is being version controlled (every single modifications are exposed to git)
 
-`git clone`
 
-`git pull`
+`git clone GIT_REPOSITORY` = Copy the existing git repository from remote or local
 
-`git fetch`
 
-`git diff`
+> **.gitignore**  
+> (file names or patterns (like: libraries folders, secrets and sensitive info) listed here will neither be scanned, tracked nor committed by git, this file should be set up before continue.  
+> Learn more about .gitignore, see: https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository  
+> or you may find useful examples for different projects or languages here: https://github.com/github/gitignore
 
-`git add`
 
-`git commit`
+> **Lifecycle**  
+> Each file in the working directory is either tracked or untracked.
+> - untracked = New files or directories that were not in the previous snapshot AND not staged.
+> - tracked = one of the following types
+>   - modified = Files that were in the previous snapshot AND is modified.
+>   - staged = Files that is labeled to be ready for commit.
+>   - unmodified = Files that were in the previous snapshot AND is NOT modified.
 
-`git push`
+### **_Get status_**
 
-`git branch`
+`git status [OPTIONS]` = List all uncommitted files 
+- `-s` = Display a short summary
 
-`git checkout`
+`git diff [OPTIONS]` = Show all UNSTAGED changes
+`--staged` = Show staged changes ready for commit
 
-`git remote add`
+`git difftool` = Show changes with external diff tool
+
+### **_Commit changes_**
+
+`git add [OPTIONS] [PATH_or_FILE_or_DIRECTORY]` = Stage modified file(s) (A new file (untracked) will be staged (then is logically also tracked).)
+- for example: `git add .` = Stage all of the files inside the current directory recursively
+- `-A` = Stage all changes
+- `-i` = interactive mode
+
+`git restore [OPTIONS] PATH_or_FILE_or_DIRECTORY` = Discard all changes that are not staged
+- `--staged ` = Unstage staged changes
+
+
+`git commit [OPTIONS]` = Commit all staged changes ()
+<!-- - `-F FILE` =  -->
+- `-m COMMENT` = Commit with the given COMMENT
+
+
+`git log` = View commit History
+
+### **_Remote repository_**
+
+`git remote add [OPTIONS] REMOTE_NAME REMOTE_URL` = Connect to remote repository (custom REMOTE_NAME)
+- `-f` = Immediately fetch remote repository after setup the connection
+
+`git remote rename` = Rename remote 
+
+`git remote remove [OPTIONS] REMOTE_NAME` = Remove the connection
+
+`git remote` = List all remote connections
+
+
+`git remote get-url REMOTE_NAME` = Display the URL of the remote
+- `-all` = List all URLs of the remote
+
+
+### **_Pull and push_**
+
+`git fetch` = Fetch from the remote repository
+- `--all` = Fetch from all remote repositories
+
+`git merge BRANCH_NAME` = Merge the target branch into the current branch
+
+`git pull` = Fetch from the remote repository and merge the branch HEAD into the current branch
+
+`git push` = Update the remote repository
+
+### **_Regret_**
+
+`git revert COMMIT_ID` = Undo the all the commits after the specific COMMIT_ID and perform a commit \
+`git revert HEAD~#` = Undo the # number of commits before the current HEAD and perform a commit
+
+
+`git reset COMMIT_ID` = Set the current HEAD to the specific COMMIT_ID and undo all the commits after that version \
+`git reset HEAD~#` = Set the HEAD to the # number before the current HEAD
+- `--soft` = Keep the undone commits being staged
+- `--hard` = Delete all undone commits
+
+### **_Git branch_**
+`git branch [OPTIONS]` = List local branches
+- `-r` = List remote-tracking branches
+- `-a` = List local and remote-tracking branches
+- `-d BRANCH_NAME` = Delete branch 
+- `-D BRANCH_NAME` = delete branch regardless its status
+- `-m OLD_BRANCH_NAME NEW_BRANCH_NAME` = Rename/move a branch
+
+`git checkout [OPTIONS] BRANCH_NAME` = Switch to branch BRANCH_NAME
+- `-b` = Create a new branch and switch to it
 
 ---
 
 ## **Docker**
 
-Virtualization
+Virtualisation
 - Container
-  - OS virtualization
+  - OS virtualisation
   - process isolation
 - Virtual Machine
-  - Hardware virtualization  
+  - Hardware virtualisation  
   (Virtual environments are built on top of the hardware level, so it necessarily includes the OS, hardware config, etc in virtual environment)
   - machine isolation
 
@@ -546,7 +631,7 @@ Implementations of containerisation
 
 ### **_Volumes_**
 
-> Volume is an external filesystem connecting to container(s) that allows us storing data inside container persistently. Since it is an external system, it is not affected by the life cycle of the container. In other words, the data is accessible after the container was stopped, killed or removed. A volume can be mounted to a container by adding `--mount` or `-v` to `docker run` or `docker create` commands.
+> Volume is an external filesystem connecting to container(s) that allows us storing data inside container persistently. Since it is an external system, it is not affected by the lifecycle of the container. In other words, the data is accessible after the container was stopped, killed or removed. A volume can be mounted to a container by adding `--mount` or `-v` to `docker run` or `docker create` commands.
 
 `docker volume create VOLUME_NAME` = Create a volume
 
@@ -559,6 +644,8 @@ Implementations of containerisation
 
 `docker volume prune [OPTIONS]` = Remove all unmounted local volumes
 - `-f` = Remove without confirmation
+
+permission
 
 ### **_From image to container_**
 
@@ -620,11 +707,11 @@ Implementations of containerisation
 ### **_Docker Compose_**
 
 > Normally, each container serves ONLY ONE purpose. That is to say, for example, a database service should not be contained in the container running the server. Since every container is a isolated run-time environment, how could we integrate multiple services into one application if multipurpose container is always a bad idea? Well, that's why docker-compose comes into play.  
-> Docker-compose is the tool that allows us to write only ONE compose.yaml file where we define the services needed and to run all containers at the same time with just one single command.  
+> Docker-compose is the tool that allows us to write only ONE docker-compose.yml file where we define the services needed and to run all containers at the same time with just one single command.  
 > (Please note that you still have to write dockerfile for your custom image.)
 
 ```yaml
-# compose.yaml example
+# docker-compose.yml example
 
 version: "3"
 services:
