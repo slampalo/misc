@@ -2,19 +2,18 @@
 
 ## **Table of Contents**
 
-   <ol>
-   <li>Introduction</li>
-   <li>ZSH tips</li>
-   <li>Path tips</li>
-   <li>User and Group management</li>
-   <li>File management</li>
-   <li>Useful utility</li>
-   <li>Fetching data from internet</li>
-   <li>Docker</li>
-   </ol>
+1. [Introduction](#introduction)
+2. [ZSH tips](#zsh-tips)
+3. [Path tips](#path-tips)
+4. [User and Group management](#user-and-group-management)
+5. [File management](#file-management)
+6. [Useful utility](#useful-utility)
+7. [Fetching data from internet](#fetching-data-from-internet)
+8. [Git](#git)
+9. [Docker](#docker)
+10. [References](#references)
 
    <!--
-
    awesome git commands section
    common docker commands
    curl wget get
@@ -37,7 +36,7 @@
 3.  Why zsh?
     - it fits the POSIX (Portable Operating System Interface) standard, the portability of programs to different UNIX variants is guaranteed.
     - more interactive
-    - more plugins (Oh-my-zsh has a large community of contributors and users, you may find a bunch of useful tools in it.)
+    - more plugins (Oh-my-ZSH has a large community of contributors and users, you may find a bunch of useful tools in it.)
 
 ---
 
@@ -54,7 +53,7 @@
 >       - `useradd --help` or `man useradd` displays the user manual of command `useradd`
 >       - `man echo` for the user manual of command echo
 >
-> 3. Most of the zsh command accepts compound options
+> 3. Most of the ZSH command accepts compound options
 >     - for example: `ls -alt` combines three options which are `-a (list all including hidden entries )`, `-l (view in long listing format)` and `-t (sort by time)`.
 
 ---
@@ -80,7 +79,7 @@ how color profile and understanding history is super helpful -->
     - dirhistory: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dirhistory
     - git: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
     - history: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history
-    - zsh Autosuggestions: https://github.com/zsh-users/zsh-autosuggestions
+    - ZSH Autosuggestions: https://github.com/zsh-users/zsh-autosuggestions
 
 3.  alias  
     You can customise your own shortcut to run command for daily operation! (However, if the program is too sophisticated, you should write a shell script instead.)
@@ -307,7 +306,7 @@ for example:
 > Create a shell script
 >
 > 1.  Create a file with .sh extension. e.g. hello.sh
-> 2.  Type `#!/bin/zsh` at the very beginning of the file telling the loader executes this script program using zsh (it would be executed using bash if you type `#!/bin/bash` instead.)
+> 2.  Type `#!/bin/zsh` at the very beginning of the file telling the loader executes this script program using ZSH (it would be executed using bash if you type `#!/bin/bash` instead.)
 > 3.  Type `echo "Hello World"`(or any other commands you want)
 > 4.  Save the file
 > 5.  Run `chmod +x hello.sh` in order to give user permission to execute the script (x = execute in symbolic mode)
@@ -522,7 +521,7 @@ What is Git?
 
 `git difftool` = Show changes with external diff tool
 
-### **_Commit changes_**
+### **_Record changes_**
 
 `git add [OPTIONS] [PATH_or_FILE_or_DIRECTORY]` = Stage modified file(s) (A new file (untracked) will be staged (then is logically also tracked).)
 - for example: `git add .` = Stage all of the files inside the current directory recursively
@@ -532,15 +531,15 @@ What is Git?
 `git restore [OPTIONS] PATH_or_FILE_or_DIRECTORY` = Discard all changes that are not staged
 - `--staged ` = Unstage staged changes
 
-
 `git commit [OPTIONS]` = Commit all staged changes ()
 <!-- - `-F FILE` =  -->
 - `-m COMMENT` = Commit with the given COMMENT
 
-
 `git log` = View commit History
 
 ### **_Remote repository_**
+
+> Before pushing your committed changes to the github or any git repositories you have to connect yours to it. 
 
 `git remote add [OPTIONS] REMOTE_NAME REMOTE_URL` = Connect to remote repository (custom REMOTE_NAME)
 - `-f` = Immediately fetch remote repository after setup the connection
@@ -556,7 +555,7 @@ What is Git?
 - `-all` = List all URLs of the remote
 
 
-### **_Pull and push_**
+### **_Pull and Push_**
 
 `git fetch` = Fetch from the remote repository
 - `--all` = Fetch from all remote repositories
@@ -567,16 +566,16 @@ What is Git?
 
 `git push` = Update the remote repository
 
-### **_Regret_**
-
-`git revert COMMIT_ID` = Undo the all the commits after the specific COMMIT_ID and perform a commit \
-`git revert HEAD~#` = Undo the # number of commits before the current HEAD and perform a commit
-
+### **_Reset and Revert_**
 
 `git reset COMMIT_ID` = Set the current HEAD to the specific COMMIT_ID and undo all the commits after that version \
 `git reset HEAD~#` = Set the HEAD to the # number before the current HEAD
 - `--soft` = Keep the undone commits being staged
 - `--hard` = Delete all undone commits
+
+`git revert COMMIT_ID` = Undo all the commits after the specific COMMIT_ID and create a new commit \
+`git revert HEAD~#` = Undo the # number of commits before the current HEAD and create a new commit
+
 
 ### **_Git branch_**
 `git branch [OPTIONS]` = List local branches
@@ -758,7 +757,6 @@ services: # Top-level element, all services go under this field
     volumes: # As said above, volumes is a filesystem external to the container storing persistent data. By mounting the current directory . to the working directory inside the container (/code in this case), we can modify the code without re-building the image.
 
     depends_on: # services that the current service depends on
-
 ```
 
 > Note: Go to the directory where the file compose.yaml is stored and run the following command:
@@ -783,27 +781,28 @@ services: # Top-level element, all services go under this field
 
 ## References:
 
-0. Basic concepts
+0. Basic concepts  
+   [Terminal, Console, Shell and Command line](https://www.geeksforgeeks.org/difference-between-terminal-console-shell-and-command-line/)
 
 1. General shell command  
-   https://linuxcommand.org/ (highly recommanded)  
-   https://www.javatpoint.com/linux-tutorial  
-   https://www.tutorialspoint.com/unix/index.htm  
-   https://docs.cs.cf.ac.uk/notes/linux-shell-commands/
-   https://www.computerhope.com/unix.htm
-   https://afni.nimh.nih.gov/pub/dist/edu/data/CD.expanded/AFNI_data6/unix_tutorial/index.html#
+   [Linuxcommand.org (highly recommanded)](https://linuxcommand.org/) \
+   [Java T point - Linux/Unix Tutorial](https://www.javatpoint.com/linux-tutorial) \
+   [tutorialspoint - UNIX / LINUX Tutorial](https://www.tutorialspoint.com/unix/index.htm) \
+   [Cardiff School of Computer Science & Informatics - Linux Shell Commands](https://docs.cs.cf.ac.uk/notes/linux-shell-commands/) \
+   [Computer Hope - Unix and Linux commands help](https://www.computerhope.com/unix.htm) \
+   [Unix Tutorial](https://afni.nimh.nih.gov/pub/dist/edu/data/CD.expanded/AFNI_data6/unix_tutorial/index.html#)
 
-2. Zsh  
-   oh-my-zsh plugin: https://github.com/ohmyzsh/ohmyzsh  
-   top 10 zsh plugins: https://travis.media/top-10-oh-my-zsh-plugins-for-productive-developers/  
-   zsh vs bash: https://www.educba.com/zsh-vs-bash/  
-   https://kruschecompany.com/zsh-vs-bash-unix-shell/  
-   practical differences between zsh and bash: https://apple.stackexchange.com/questions/361870/what-are-the-practical-differences-between-bash-and-zsh  
-   why use zsh: https://www.howtogeek.com/362409/what-is-zsh-and-why-should-you-use-it-instead-of-bash/
+2. ZSH  
+   [oh-my-zsh plugin](https://github.com/ohmyzsh/ohmyzsh) \
+   [Top 10 ZSH plugins](https://travis.media/top-10-oh-my-zsh-plugins-for-productive-developers/) \
+   [ZSH vs Bash](https://www.educba.com/zsh-vs-bash/)  \
+   [ZSH vs Bash - UNIX shell in comparison](https://kruschecompany.com/zsh-vs-bash-unix-shell/) \
+   [Practical differences between ZSH and bash](https://apple.stackexchange.com/questions/361870/what-are-the-practical-differences-between-bash-and-zsh) \
+   [Why use ZSH](https://www.howtogeek.com/362409/what-is-zsh-and-why-should-you-use-it-instead-of-bash/)
 
 3. Commands  
-   chmod: https://tutorialshut.com/file-permissions-chmod-command/  
-   awk: https://phoenixnap.com/kb/awk-command-in-linux
+   [chmod](https://tutorialshut.com/file-permissions-chmod-command/) \
+   [awk](https://phoenixnap.com/kb/awk-command-in-linux)
 
 4. User and Group management  
    https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/  
@@ -812,18 +811,19 @@ services: # Top-level element, all services go under this field
    https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-managing_users_and_groups
 
 5. Fetching data from internet  
-   wget vs crul: https://www.linuxfordevices.com/tutorials/linux/wget-vs-curl
-   wget: https://www.hostinger.com/tutorials/wget-command-examples/#Using_Wget_Command_to_Download_Single_Files
+   [wget vs crul](https://www.linuxfordevices.com/tutorials/linux/wget-vs-curl) \
+   [wget](https://www.hostinger.com/tutorials/wget-command-examples/#Using_Wget_Command_to_Download_Single_Files)
 
 6. Shell script  
-   https://linuxcommand.org/lc3_writing_shell_scripts.php
+   [writing shell scripts](https://linuxcommand.org/lc3_writing_shell_scripts.php)
 
-7. Git
+7. Git  
+   [branching strategies](https://paloit2016.sharepoint.com/sites/WOW/SitePages/Source-Control-Guidelines.aspx)
 
 8. Docker  
-   containers vs virtual machines: https://www.ibm.com/cloud/blog/containers-vs-vms
-   docker image and container: https://phoenixnap.com/kb/docker-image-vs-container  
-   container lifecycle : https://linuxhandbook.com/container-lifecycle-docker-commands/  
-   docker volumes: https://phoenixnap.com/kb/docker-volumes
+   [containers vs virtual machines](https://www.ibm.com/cloud/blog/containers-vs-vms) \
+   [docker image and container](https://phoenixnap.com/kb/docker-image-vs-container) \
+   [container lifecycle](https://linuxhandbook.com/container-lifecycle-docker-commands/) \
+   [docker volumes](https://phoenixnap.com/kb/docker-volumes)
 
 ##### Brought to you by Suen Lam ;)
