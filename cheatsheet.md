@@ -449,8 +449,9 @@ done
 What is Git?
 - Distributed version control system
 > Two types of version control systems: Centralised version control system vs Distributed version control system
+> 
 
-- Delta-based version control
+- Snapshot-based version control
 > Delta-based version control vs Snapshot-based version control
 
 > **Connect Github with SSH**
@@ -508,7 +509,7 @@ What is Git?
 > - untracked = New files or directories that were not in the previous snapshot AND not staged.
 > - tracked = one of the following types
 >   - modified = Files that were in the previous snapshot AND is modified.
->   - staged = Files that is labeled to be ready for commit.
+>   - staged = Files that is labeled to be ready for the commit.
 >   - unmodified = Files that were in the previous snapshot AND is NOT modified.
 
 ### **_Get status_**
@@ -517,7 +518,7 @@ What is Git?
 - `-s` = Display a short summary
 
 `git diff [OPTIONS]` = Show all UNSTAGED changes
-`--staged` = Show staged changes ready for commit
+- `--staged` = Show staged changes ready for commit
 
 `git difftool` = Show changes with external diff tool
 
@@ -549,8 +550,6 @@ What is Git?
 `git remote remove [OPTIONS] REMOTE_NAME` = Remove the connection
 
 `git remote` = List all remote connections
-
-
 `git remote get-url REMOTE_NAME` = Display the URL of the remote
 - `-all` = List all URLs of the remote
 
@@ -608,9 +607,7 @@ Implementations of containerisation
 
 ### **_Image_**
 
-`docker pull IMAGE` = Download the image
-
-> [DockerHub](https://hub.docker.com/)
+`docker pull IMAGE` = Download the image (default from [DockerHub](https://hub.docker.com/))
 
 `docker images` = List all images
 
@@ -674,8 +671,7 @@ permission
 
 `docker unpause CONTAINER_ID_or_NAME` = Resume the paused container (not to re-start it)
 
-`docker stop [OPTIONS] CONTAINER_ID_or_NAME` = Terminate the running container (or kill it if 10 seconds is over since the signal sent to the process)
-
+`docker stop [OPTIONS] CONTAINER_ID_or_NAME` = Terminate the running container (or kill it if no response after 10 seconds)
 - `-t SECONDS` = Seconds for waiting before killing it
 
 `docker rename CONTAINER_ID_or_NAME NEW_CONTAINER_NAME` = Rename a container
@@ -708,6 +704,7 @@ permission
 > Normally, each container serves ONLY ONE purpose. That is to say, for example, a database service should not be contained in the container running the server. Since every container is a isolated run-time environment, how could we integrate multiple services into one application if multipurpose container is always a bad idea? Well, that's why docker-compose comes into play.  
 > Docker-compose is the tool that allows us to write only ONE docker-compose.yml file where we define the services needed and to run all containers at the same time with just one single command.  
 > (Please note that you still have to write dockerfile for your custom image.)
+<!-- keywords: networking -->
 
 ```yaml
 # docker-compose.yml example
