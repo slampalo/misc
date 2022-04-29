@@ -64,22 +64,22 @@
 how color profile and understanding history is super helpful -->
 
 1.  Theme
-    - Oh-my-zsh: https://github.com/ohmyzsh/ohmyzsh
+    - [Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 
 > Install oh-my-zsh:
 > - Type in the terminal (make sure it is using the z shell): `sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)`
 > 
 > Change the theme of your z shell (after installing oh-my-zsh):
-> 1.  copy the name of the theme found here: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+> 1.  copy the name of the theme found [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)
 > 2.  open file: `~/.zshrc` and paste the name of the theme to the variable `ZSH_THEME`
 >     Right at the moment, the author is using the theme "alien": https://github.com/eendroroy/alien (let's follow the guideline and customise, that's fuuuuuuuuuun! )
 
 2.  Plugins (For more plugins: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins)
 
-    - dirhistory: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dirhistory
-    - git: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
-    - history: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history
-    - ZSH Autosuggestions: https://github.com/zsh-users/zsh-autosuggestions
+    - [dirhistory](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dirhistory)
+    - [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)
+    - [history](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history)
+    - [ZSH Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
 3.  alias  
     You can customise your own shortcut to run command for daily operation! (However, if the program is too sophisticated, you should write a shell script instead.)
@@ -295,7 +295,7 @@ for example:
 
 `set VARIABLE=VALUE` = Assign value to a local variable.
 
-> Know more about the difference between `export` and `set`, see: https://www.theunixschool.com/2010/04/what-is-difference-between-export-set.html
+> Know more about the difference between `export` and `set`, see [article](https://www.theunixschool.com/2010/04/what-is-difference-between-export-set.html)
 
 `source PATH` = Load a profile to current session
 
@@ -463,7 +463,7 @@ What is Git?
 >     - `cd ~/.ssh`
 >     - `clipcopy github_paloit.pub`
 > 3. Add the public key to your github account
->     - direct to https://www.github.com and login your account
+>     - direct to [Github](https://www.github.com) and login your account
 >     - open the user dropdown menu by clicking your profile pic at the top-right corner
 >     - select "Settings" and go to "SSH and GSP keys" under the "Access" header 
 >     - click "New SSH key" button, then input the "Title" of the key (as always, it should be meaningful) and paste the copied public key to the "Key" field
@@ -499,8 +499,8 @@ What is Git?
 
 > **.gitignore**  
 > (file names or patterns (like: libraries folders, secrets and sensitive info) listed here will neither be scanned, tracked nor committed by git, this file should be set up before continue.  
-> Learn more about .gitignore, see: https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository  
-> or you may find useful examples for different projects or languages here: https://github.com/github/gitignore
+> Learn more about .gitignore, see [page](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)  
+> or you may find useful examples for different projects or languages [here](https://github.com/github/gitignore)
 
 
 > **Lifecycle**  
@@ -610,7 +610,7 @@ Implementations of containerisation
 
 `docker pull IMAGE` = Download the image
 
-> DockerHub: https://hub.docker.com/
+> [DockerHub](https://hub.docker.com/)
 
 `docker images` = List all images
 
