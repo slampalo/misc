@@ -596,7 +596,15 @@ What is Git?
 > 
 > However, every time we integrate commit from one branch to another, if the changes made are at the same location, a conflict occurs. For example, you and your colleague have added difference contents to the same line or a file was deleted by you whilst was modified by he/she. It's always good to avoid multiple workers editing the same file if possible, otherwise, you have to deal with merge conflict.
 > 
-> Since git is unable to determine which is the correct change, it cannot perform auto merge for you. In other words, you have to look through the changes via editor and communicate with your teammates, then keep one (or both) of the changes, delete the useless content and preform `git merge` MANUALLY.
+> Since git is unable to determine which is the correct change, it cannot perform auto merge for you. So what you need to do is:
+> 1. look through the changes via editor
+>    - the conflicting contents are enclosed with <<<<<<< ======= >>>>>>
+>    - contents before ======= are the local changes and contents after ======= the remote changes
+> 2. communicate with your teammates about the conflict
+> 3. keep one of the changes and remove the other, or keep both of the changes
+> 4. preform `git merge`, `git commit` after editing
+
+
 ---
 
 ## **Docker**
