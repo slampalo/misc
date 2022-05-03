@@ -25,16 +25,16 @@
 
 1.  What is terminal and shell?
 
-     Terminal: an Interface to interact with the kernel, basically, it is a program that receive the input from and display the output to user.
+     Terminal: An Interface to interact with the kernel, basically, it is a program that receive the input from and display the output to user.
     <!-- Kernel: the heart of the OS helping software to communicate with hardware -->
-    - Shell: a program that pass the command on to the operating system for execution
+    - Shell: A program that pass the command on to the operating system for execution
 
 2.  What is zsh?
-    - based on bash (bourne again shell)
-    - the default shell on mac.
+    - Based on bash (bourne again shell)
+    - Default shell on mac.
 
 3.  Why zsh?
-    - it fits the POSIX (Portable Operating System Interface) standard, the portability of programs to different UNIX variants is guaranteed.
+    - It fits the POSIX (Portable Operating System Interface) standard, the portability of programs to different UNIX variants is guaranteed.
     - more interactive
     - more plugins (Oh-my-ZSH has a large community of contributors and users, you may find a bunch of useful tools in it.)
 
@@ -96,7 +96,7 @@ how color profile and understanding history is super helpful -->
 
 4.  Builtin powerful tab auto-completion and auto-correction.
 
-    - for example: “/u/lo/b” --> press tab --> “/usr/local/bin”
+    - For example: “/u/lo/b” --> press tab --> “/usr/local/bin”
 
 5.  Select listed options with arrow keys
 
@@ -106,25 +106,25 @@ how color profile and understanding history is super helpful -->
 
 ## **Path tips**
 
-`/` = root path
+`/` = Root path
 
-`~` = home path
+`~` = Home path
 
-`.` = this path
+`.` = This path
 
-`..` = parent path
+`..` = Parent path
 
-`-` = last path
+`-` = Last path
 
-`pwd` = print working directory (current location)
+`pwd` = Print working directory (current location)
 
 `cd PATH` = Change working directory to PATH
-
-- for example: `cd ~/Document` = change working directory to "Document" inside home directory
+> For example:
+> `cd ~/Document` = Change working directory to "Document" inside home directory
 
 `ls [OPTIONS] [PATH]` = List contents of the directory (the path would be current directory if not specified.) if list all files
 
-- `-a` = List all contents including entries starting with "." , for example: .ssh, .zshrc
+- `-a` = List all contents including entries starting with "." , such as .ssh, .zshrc
 - `-l` = List with details
 - `-h` = Display file sizes in human readable format
 - `-R` = List subdirectories recursively
@@ -143,12 +143,12 @@ how color profile and understanding history is super helpful -->
 `stat PATH` = Display the status of file or directory
 
 `du PATH` = Display disk usage of directories (recursively)
-`-a` = Display all the size of files along with directories
-`-s` = Display a total for each argument
-`-h` = human readable
+- `-a` = Display all the size of files along with directories
+- `-s` = Display a total for each argument
+- `-h` = Human readable
 
 `mkdir [OPTIONS] DIRECTORY` = Create directory
-- `-p` = create directory with intermediate directories if they don't exist.
+- `-p` = Create directory with intermediate directories if they don't exist.
 
 `touch NEW_FILE` = Create new file
 
@@ -168,7 +168,7 @@ how color profile and understanding history is super helpful -->
 > - `>` = Write content to the file (overwrite if the file has content);
 > - `>>` = Append content to the end of the file
 
-`chmod MODE FILE_NAME` = Change the permission of files or directory
+`chmod MODE FILE` = Change the permission of files or directory
 
 > Mode can be symbolic or absolute, and absolute mode would be used for the demonstration. Know more about mode, see article on chmod under header "3." in References.  
 > Absolute mode consists of 3 integers and each position represents the permission for User, Group, Others respectively.
@@ -190,13 +190,13 @@ how color profile and understanding history is super helpful -->
 
 `echo "CONTENT"` = Print content to standard output (terminal by default)
 - `echo "CONTENT" > FILE` Write content to file
-> if you want to read the manual of command "echo", type `/bin/echo --help` instead of `echo --help`, which simply print --help to the output.
+> If you want to read the manual of command "echo", type `/bin/echo --help` instead of `echo --help`, which simply print --help to the output.
 
 `mv PATH_1 PATH_2` = Move file or directory (this command is often used to rename file and directory.)
 
 `rm [OPTIONS] FILE` = Remove file(s)
-
 - `-rf` = Remove directory including its contents.
+
 > Another command designed for removing directory in particular:  
 > `rmdir [OPTIONS] DIRECTORY`
 > - `-p` = Remove empty directory with its parent directory(ies)
@@ -210,7 +210,7 @@ how color profile and understanding history is super helpful -->
 ## **User and Group management**
 
 User configuration file: `/etc/passwd`  
-password file (All passwords are encrypted): `/etc/shadow`  
+Password file (All passwords are encrypted): `/etc/shadow`  
 Group info file: `/etc/group`
 
 `getent passwd` = List all users
@@ -218,7 +218,6 @@ Group info file: `/etc/group`
 `getent group` = List all groups
 
 `sudo useradd [OPTIONS] USER_NAME` = Create user
-
 - `-d PATH` = Specify home directory for the new user
 - `-m` = Create home directory for the new user if it does not exist
 - `-s PATH` = Set user's shell (Default shell is /bin/bash)
@@ -234,7 +233,6 @@ Group info file: `/etc/group`
 `su USERNAME` = Switch user (By using `sudo`, you may login without password.)
 
 `sudo userdel [OPTIONS] USER_NAME` = Remove user
-
 - `-r` = Remove user including mail and home directory
 
 `groups` = List groups that the user is currently in
@@ -257,14 +255,13 @@ Group info file: `/etc/group`
 `$` = Articulate variable
 
 `|` = Pipeline connects two commands, pass the output of the former as the input of the latter
-for example:
-
-1.  `ls -al ~ | grep .git`
-2.  `ls -alr ~ | more`
+> For example:
+> - `ls -al ~ | grep .git`
+> - `ls -alr ~ | more`
 
 <!-- `awk` TODO -->
 
-`grep [OPTIONS] "PATTERN" FILE_NAME` = Search the file for lines containing particular pattern and print it on terminal (or you may use I/O redirection symbol: ">" and ">>" to write the results to file)
+`grep [OPTIONS] "PATTERN" FILE` = Search the file for lines containing particular pattern and print it on terminal (or you may use I/O redirection symbol: ">" and ">>" to write the results to file)
 
 - `-c` = Count number of the matched lines
 - `-i` = Case insensitive
@@ -279,17 +276,17 @@ for example:
 > - `-n` = sort in numeric order
 > - `-r` = reverse sorting order
 
-> for example:
+> For example:
 >
 > - `ls -alR ~| grep .json | sort -r | more`
 
 <!-- `xargs` TODO -->
 
 `eval $COMMAND_VARIABLES` = Run shell command stored in variable(s)
-for example:
-
-1.  `command="ls -alR | grep .json | more"` \
-     run `eval $command` is equivalent to run `ls -alR | grep .json | more"`
+> For example:
+> 
+> 1. `command="ls -alR | grep .json | more"` \
+> 2. run `eval $command` (equivalent to run `ls -alR | grep .json | more"`)
 
 `export ENV_VARIABLE=VALUE` = Assign value to a environment variable which can be accessed from all the shells and processes under the same original shell.
 
@@ -318,26 +315,26 @@ for example:
 ### **_Conditional statements_**
 
 `test EXPRESSION` = `[ EXPRESSION ]` = Evaluates the expression and returns 0 (true) or 1 (false)  
- The following operators would help you constructing expression:
+Use the following operators to constructing expression:
 
 - Logical operators
-- `!` = Negation
-- `-a` = And
-- `-o` = Inclusive or (at least one expression is true)
+   - `!` = Negation
+   - `-a` = And
+   - `-o` = Inclusive or (at least one expression is true)
 - Mathematical operators
-- `-eq` = Numerically Equivalent
-- `-ne` = Numerically non-equivalent
-- `-gt` = Greater than
-- `-ge` = Greater than or equal
-- `-lt` = Less than
-- `-le` = Less than or equal
+   - `-eq` = Numerically Equivalent
+   - `-ne` = Numerically non-equivalent
+   - `-gt` = Greater than
+   - `-ge` = Greater than or equal
+   - `-lt` = Less than
+   - `-le` = Less than or equal
 - String comparing
-- `=` = Two strings are equivalent
-- `!=` = Two strings are not equivalent
+   - `=` = Two strings are equivalent
+   - `!=` = Two strings are not equivalent
 - File checking
-- `-e` = File exists
-- `-d` = File exists and is a directory
-- `-f` = File exists and is a regular file
+   - `-e` = File exists
+   - `-d` = File exists and is a directory
+   - `-f` = File exists and is a regular file
 
 `if...then...elif...then...else...fi`
 
@@ -436,7 +433,7 @@ done
 - `--progress=SYMBOL_TYPE` = Show progress bar (SYMBOL_TYPE can be dot or bar)
 
 <!-- > NOTE: Install wget using Homebrew: `brew install wget`   -->
-<!-- > Note: Basically, the differences between `curl` and `wget` are:
+<!-- > NOTE: Basically, the differences between `curl` and `wget` are:
 >
 > 1. `curl` supports a lot of protocol, wget supports only http and ftp
 > 2. -->
@@ -457,23 +454,24 @@ What is Git?
 > **Connect Github with SSH**
 > 1. Generate SSH key
 >     - Open terminal and type `ssh-keygen`
->     - set the path to store the keys. for example: /home/USERNAME/.ssh/github_paloit
->     - set passphrase (or just press enter to leave it blank)
->     - the file with .pub extension is the public key and the one without is the private key 
+>     - Set the path to store the keys. For example: `/home/YOUR_USER_NAME_HERE/.ssh/github_paloit` (absolute path is required)
+>     - Set passphrase (or just press enter to leave it blank)
+>     - Then it generates two files, the one with .pub extension is the public key and the one without the private key.
 > 2. Copy the public key 
 >     - `cd ~/.ssh`
 >     - `clipcopy github_paloit.pub`
 > 3. Add the public key to your github account
->     - direct to [Github](https://www.github.com) and login your account
->     - open the user dropdown menu by clicking your profile pic at the top-right corner
->     - select "Settings" and go to "SSH and GSP keys" under the "Access" header 
->     - click "New SSH key" button, then input the "Title" of the key (as always, it should be meaningful) and paste the copied public key to the "Key" field
-> 4. 
->     - open `config` file (create if not exists) and add the following:   
-```
-     Host github.com  
-        IdentityFile ~/.ssh/github_paloit
-```
+>     - Direct to [Github](https://www.github.com) and login your account
+>     - Open the user dropdown menu by clicking your profile pic at the top-right corner
+>     - Select "Settings" and go to "SSH and GSP keys" under the "Access" header 
+>     - Click "New SSH key" button, then input the "Title" of the key (as always, it should be meaningful) and paste the copied public key to the "Key" field.
+> 4. Add info to the connection config file
+>     - Open `~/.ssh/config` file (create if not exists) and add the following:   
+>        ```
+>        Host github.com  
+>            IdentityFile ~/.ssh/github_paloit
+>        ```
+>     - Save the file.
 
 
 ### **_Git configuration_**
@@ -499,15 +497,15 @@ What is Git?
 
 
 > **.gitignore**  
-> (file names or patterns (like: libraries folders, secrets and sensitive info) listed here will neither be scanned, tracked nor committed by git, this file should be set up before continue.  
+> (File names or patterns listed here will neither be scanned, tracked nor committed by git, this file should be set up before continue. (files and folders like libraries folders, secrets and sensitive info)  
 > Learn more about .gitignore, see [page](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)  
-> or you may find useful examples for different projects or languages [here](https://github.com/github/gitignore)
+> or you may find useful templates for different projects or languages [here](https://github.com/github/gitignore)
 
 
 > **Lifecycle**  
 > Each file in the working directory is either tracked or untracked.
 > - untracked = New files or directories that were not in the previous snapshot AND not staged.
-> - tracked = one of the following types
+> - tracked = One of the following
 >   - modified = Files that were in the previous snapshot AND is modified.
 >   - staged = Files that is labeled to be ready for the commit.
 >   - unmodified = Files that were in the previous snapshot AND is NOT modified.
@@ -517,17 +515,18 @@ What is Git?
 `git status [OPTIONS]` = List all uncommitted files 
 - `-s` = Display a short summary
 
-`git diff [OPTIONS]` = Show all UNSTAGED changes
+`git diff [OPTIONS]` = Show all NON-STAGED changes
+- `--check` = Identify possible error
 - `--staged` = Show staged changes ready for commit
 
 `git difftool` = Show changes with external diff tool
 
 ### **_Record changes_**
 
-`git add [OPTIONS] [PATH_or_FILE_or_DIRECTORY]` = Stage modified file(s) (A new file (untracked) will be staged (then is logically also tracked).)
+`git add [OPTIONS] [PATH_or_FILE_or_DIRECTORY]` = Stage modified file(s) (A new file (untracked) will be staged (then, logically, is also tracked).)
 - for example: `git add .` = Stage all of the files inside the current directory recursively
 - `-A` = Stage all changes
-- `-i` = interactive mode
+- `-i` = Interactive mode
 
 `git restore [OPTIONS] PATH_or_FILE_or_DIRECTORY` = Discard all changes that are not staged
 - `--staged ` = Unstage staged changes
@@ -537,6 +536,8 @@ What is Git?
 - `-m COMMENT` = Commit with the given COMMENT
 
 `git log` = View commit History
+
+`git blame FILE` = Display the changes made by who and when
 
 ### **_Remote repository_**
 
@@ -565,7 +566,7 @@ What is Git?
 
 `git push` = Update the remote repository
 
-### **_Reset and Revert_**
+### **_Undo changes_**
 
 `git reset COMMIT_ID` = Set the current HEAD to the specific COMMIT_ID and undo all the commits after that version \
 `git reset HEAD~#` = Set the HEAD to the # number before the current HEAD
@@ -580,12 +581,24 @@ What is Git?
 `git branch [OPTIONS]` = List local branches
 - `-r` = List remote-tracking branches
 - `-a` = List local and remote-tracking branches
+- `-v` or `-vv` = Display HEAD with subject line
 - `-d BRANCH_NAME` = Delete branch 
-- `-D BRANCH_NAME` = delete branch regardless its status
+- `-D BRANCH_NAME` = Delete branch regardless its status
 - `-m OLD_BRANCH_NAME NEW_BRANCH_NAME` = Rename/move a branch
 
 `git checkout [OPTIONS] BRANCH_NAME` = Switch to branch BRANCH_NAME
 - `-b` = Create a new branch and switch to it
+
+
+### **_Merge conflict_**
+> NOTE: Most of the time, git automatically merge contents from different sources for you as long as there is no conflict at all. 
+> So, how do the conflicts occur? 
+> Every time we integrate contents from different sources (commits or branches), if the changes made from the different sources are at the same location, a conflict occurs, for example, you and your colleague have added difference contents to the same line.
+> 
+> 
+> 
+> 
+
 
 ---
 
@@ -784,7 +797,7 @@ services: # Top-level element, all services go under this field
 1. General shell command  
    [Linuxcommand.org (highly recommanded)](https://linuxcommand.org/) \
    [Java T point - Linux/Unix Tutorial](https://www.javatpoint.com/linux-tutorial) \
-   [tutorialspoint - UNIX / LINUX Tutorial](https://www.tutorialspoint.com/unix/index.htm) \
+   [Tutorials Point - UNIX / LINUX Tutorial](https://www.tutorialspoint.com/unix/index.htm) \
    [Cardiff School of Computer Science & Informatics - Linux Shell Commands](https://docs.cs.cf.ac.uk/notes/linux-shell-commands/) \
    [Computer Hope - Unix and Linux commands help](https://www.computerhope.com/unix.htm) \
    [Unix Tutorial](https://afni.nimh.nih.gov/pub/dist/edu/data/CD.expanded/AFNI_data6/unix_tutorial/index.html#)
@@ -802,25 +815,30 @@ services: # Top-level element, all services go under this field
    [awk](https://phoenixnap.com/kb/awk-command-in-linux)
 
 4. User and Group management  
-   https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/  
-   https://www.redhat.com/sysadmin/linux-user-group-management  
-   https://www.redhat.com/sysadmin/local-group-accounts  
-   https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-managing_users_and_groups
+   [How to create users in linux using useradd command](https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/) \
+   [Linux user group management](https://www.redhat.com/sysadmin/linux-user-group-management) \
+   [local group accounts](https://www.redhat.com/sysadmin/local-group-accounts) \
+   [Managing users and groups](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-managing_users_and_groups)
 
 5. Fetching data from internet  
    [wget vs crul](https://www.linuxfordevices.com/tutorials/linux/wget-vs-curl) \
    [wget](https://www.hostinger.com/tutorials/wget-command-examples/#Using_Wget_Command_to_Download_Single_Files)
 
 6. Shell script  
-   [writing shell scripts](https://linuxcommand.org/lc3_writing_shell_scripts.php)
+   [Writing shell scripts](https://linuxcommand.org/lc3_writing_shell_scripts.php)
 
 7. Git  
-   [branching strategies](https://paloit2016.sharepoint.com/sites/WOW/SitePages/Source-Control-Guidelines.aspx)
+   [Git-tower](https://www.git-tower.com/) \
+   [Atlassian ](https://www.atlassian.com/git) \
+   [Trunk Based Development](https://trunkbaseddevelopment.com/) \
+   [Tutorials Point - Git Tutorial](https://www.tutorialspoint.com/git/index.htm) \
+   [Branching strategies](https://paloit2016.sharepoint.com/sites/WOW/SitePages/Source-Control-Guidelines.aspx) \
+   [How to handle merge conflicts in git](https://www.freecodecamp.org/news/how-to-handle-merge-conflicts-in-git/)
 
 8. Docker  
-   [containers vs virtual machines](https://www.ibm.com/cloud/blog/containers-vs-vms) \
-   [docker image and container](https://phoenixnap.com/kb/docker-image-vs-container) \
-   [container lifecycle](https://linuxhandbook.com/container-lifecycle-docker-commands/) \
-   [docker volumes](https://phoenixnap.com/kb/docker-volumes)
+   [Containers vs Virtual machines](https://www.ibm.com/cloud/blog/containers-vs-vms) \
+   [Docker image and container](https://phoenixnap.com/kb/docker-image-vs-container) \
+   [Container lifecycle](https://linuxhandbook.com/container-lifecycle-docker-commands/) \
+   [Docker volumes](https://phoenixnap.com/kb/docker-volumes)
 
 ##### Brought to you by Suen Lam ;)
