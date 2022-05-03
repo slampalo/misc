@@ -477,7 +477,7 @@ What is Git?
 ### **_Git configuration_**
 
 `git config [OPTIONS] [KEY] [VALUE]` = Git configuration
-> Setting up your profile is important because git have to record all the information of every single changes including WHO making the changes
+> NOTE: Setting up your profile is important because git have to record all the information of every single changes including WHO making the changes
 > - `git config --global user.name YOUR_NAME` = Set your user name
 > - `git config --global user.email YOUR_EMAIL` = Set your email
 >
@@ -531,13 +531,14 @@ What is Git?
 `git restore [OPTIONS] PATH_or_FILE_or_DIRECTORY` = Discard all changes that are not staged
 - `--staged ` = Unstage staged changes
 
-`git commit [OPTIONS]` = Commit all staged changes ()
+`git commit [OPTIONS]` = Commit all changes (staged by `git add`)
 <!-- - `-F FILE` =  -->
 - `-m COMMENT` = Commit with the given COMMENT
+- `--amend -m NEW_COMMENT` = Rewrite commit message without changing the snapshot
 
 `git log` = View commit History
 
-`git blame FILE` = Display the changes made by who and when
+`git blame FILE` = Display when did who make what changes
 
 ### **_Remote repository_**
 
@@ -562,7 +563,7 @@ What is Git?
 
 `git merge BRANCH_NAME` = Merge the target branch into the current branch
 
-`git pull` = Fetch from the remote repository and merge the branch HEAD into the current branch
+`git pull` = Fetch from the remote repository and merge the branch HEAD into the current branch (combination of `git fetch`and `git merge`)
 
 `git push` = Update the remote repository
 
@@ -591,15 +592,11 @@ What is Git?
 
 
 ### **_Merge conflict_**
-> NOTE: Most of the time, git automatically merge contents from different sources for you as long as there is no conflict at all. 
-> So, how do the conflicts occur? 
-> Every time we integrate contents from different sources (commits or branches), if the changes made from the different sources are at the same location, a conflict occurs, for example, you and your colleague have added difference contents to the same line.
+> NOTE: In a normal situation, git automatically merge contents from different sources for you as long as there is no conflict at all.
 > 
+> However, every time we integrate commit from one branch to another, if the changes made are at the same location, a conflict occurs. For example, you and your colleague have added difference contents to the same line or a file was deleted by you whilst was modified by he/she. It's always good to avoid multiple workers editing the same file if possible, otherwise, you have to deal with merge conflict.
 > 
-> 
-> 
-
-
+> Since git is unable to determine which is the correct change, it cannot perform auto merge for you. In other words, you have to look through the changes via editor and communicate with your teammates, then keep one (or both) of the changes, delete the useless content and preform `git merge` MANUALLY.
 ---
 
 ## **Docker**
