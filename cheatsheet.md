@@ -2,53 +2,45 @@
 
 ## **Table of Contents**
 
-1. [Introduction](#introduction)
-2. [ZSH tips](#zsh-tips)
-3. [Path tips](#path-tips)
-4. [User and Group management](#user-and-group-management)
-5. [File management](#file-management)
-6. [Useful utility](#useful-utility)
-7. [Fetching data from internet](#fetching-data-from-internet)
-8. [Git](#git)
+0. [TL;DR](#tldr) 
+> If you are looking only for the syntax or the functionality, go directly to the TL;DR section. (Thanks Mr. Kierr Sunega for the suggestion)
+1. [ZSH tips](#zsh-tips)
+2. [Path tips](#path-tips)
+3. [User and Group management](#user-and-group-management)
+4. [File management](#file-management)
+5. [Useful utility](#useful-utility)
+6. [Shell Scripting](#shell-scripting)
+    - [Conditional Statements](#conditional-statements)
+    - [Loop Statements](#loop-statements)
+7.  [Fetching data from internet](#fetching-data-from-internet)
+8.  [Git](#git)
+    - [Git configuration](#git-configuration)
+    - [Git repository](#git-repository)
+    - [Get status](#get-status)
+    - [Remote repository](#remote-repository)
+    - [Pull and Push](#pull-and-push)
+    - [Undo changes](#undo-changes)
+    - [Git branch](#git-branch)
+    - [Merge conflict](#merge-conflict)
 9. [Docker](#docker)
-10. [References](#references)
-
-   <!--
-   awesome git commands section
-   common docker commands
-   curl wget get
-   net requests like a ninja with curl -->
-
----
-
-## **Introduction**
-
-1.  What is terminal and shell?
-
-     Terminal: An Interface to interact with the kernel, basically, it is a program that receive the input from and display the output to user.
-    <!-- Kernel: the heart of the OS helping software to communicate with hardware -->
-    - Shell: A program that pass the command on to the operating system for execution
-
-2.  What is zsh?
-    - Based on bash (bourne again shell)
-    - Default shell on mac.
-
-3.  Why zsh?
-    - It fits the POSIX (Portable Operating System Interface) standard, the portability of programs to different UNIX variants is guaranteed.
-    - more interactive
-    - more plugins (Oh-my-ZSH has a large community of contributors and users, you may find a bunch of useful tools in it.)
+    - [Image](#image)
+    - [Volume](#volume)
+    - [From image to container](#from-image-to-container)
+    - [Container](#container)
+    - [Docker Compose](#docker-compose)
+10. [References](#references) 
 
 ---
 
 > **NOTES**
->
+> 
 > 1. For the sake of consistency, here is the structure of commands in this cheat sheet: 
 >     - `command [OPTIONS] PARAMETER`
 >       - Commands are indicated in lowercase.
 >       - Parameters are indicated in uppercase.
 >       - Parameters inside square brackets "[ ]" are optional.
 >
-> 2. You shall know more about the command by typing `command --help` or `man command`
+> 2. You may know more about the command by typing `command --help` or `man command`
 >     - for example:
 >       - `useradd --help` or `man useradd` displays the user manual of command `useradd`
 >       - `man echo` for the user manual of command echo
@@ -56,9 +48,212 @@
 > 3. Most of the ZSH command accepts compound options
 >     - for example: `ls -alt` combines three options which are `-a (list all including hidden entries )`, `-l (view in long listing format)` and `-t (sort by time)`.
 
+
 ---
 
+## **TL;DR**
+
+
+### **_Zsh_**
+
+- Start Z-shell: `zsh`
+- Restart Z-shell: `exec zsh`
+
+
+### **_Path_**
+
+- Print working directory: `pwd`
+- List all entries and sort by time in descending order: `ls -alht`
+- List all entries and sort by time in ascending order: `ls -alhtr`
+- Change working directory: `cd PATH`
+
+
+### **_File_**
+
+- Check file type: `file PATH`
+- Check file status: `stat PATH`
+- Check disk usage: `du PATH`
+- Create new directory: `mkdir NEW_DIRECTORY`
+- Create new file: `touch NEW_FILE`
+- Change the permissions of files or directory: `chmod MODE FILE`
+- Move file: `mv FILE DESTINATION`
+- Move directory: `mv DIRECTORY DESTINATION`
+- Copy file or directory: `cp SOURCE DESTINATION`
+- Copy content: `clipcopy FILE` (then press command/ctrl + v to paste)
+- Print content: `cat FILE`
+- Remove file: `rm FILE`
+- Remove directory: `rm -rf DIRECTORY`
+
+
+### **_User and Group management_**
+
+- List all users: `getent passwd`
+- List all groups: `getent group`
+- Create user with home directory: `sudo useradd -m USER_NAME`
+- Change password: `sudo passwd USER_NAME`
+- Remove user including home directory: `sudo userdel -r USER_NAME`
+- Create group: `groupadd GROUP_NAME`
+- Remove group: `groupdel GROUP_NAME`
+- Add user to group: `sudo usermod -aG GROUP USER_NAME`
+
+### **_Useful utility_**
+
+- Load profile to current session: `source PATH`
+
+### **_Shell scripting_**
+
+- Conditionals: 
+```sh
+if CONDITIONAL_EXPRESSION; then
+    ACTIONS 
+elif CONDITIONAL_EXPRESSION; then
+    ACTIONS
+else
+    ACTIONS
+fi
+```
+```sh
+case SUBJECT in
+
+CONDITION_1)
+
+    ACTIONS
+
+;;
+
+CONDITION_2)
+
+    ACTIONS
+
+;;
+
+esac
+```
+
+- Loop:
+```sh
+for ELEMENT in ITERABLE
+do
+    ACTIONS
+done
+```
+
+### **_Fetching data from internet_**
+
+- Display fetched data: `curl URL`
+- Download data: 
+    - `curl -O URL`
+    - `curl -o FILE_NAME URL`
+    - `wget --progress=bar URL`
+    - `wget --progress=bar -O FILE_NAME URL`
+
+### **_Git_**
+
+**Get information**
+
+- Display repository status: `git status`
+- Display non-staged changes: `git diff`
+
+
+**Record changes**
+
+- Stage changes: `git add FILE`
+- Stage all changes: `git add -A`
+- Commit staged changes: `git commit -m "COMMIT_MESSAGE"`
+- Pull (fetch and merge) from remote branch: `git pull`
+- Push local changes to remote branch: `git push REMOTE BRANCH` 
+
+
+**Undo changes**
+
+- Discard changes: `git restore FILE`
+- Unstage staged changes: `git restore --staged FILE`
+- Undo commit: 
+    - `git reset --soft COMMIT_ID`
+    - `git reset --soft HEAD~#`
+    - `git revert COMMIT_ID`
+    - `git revert HEAD~#`
+
+
+**Remote**
+
+- List all remote connections: `git remote`
+- Add remote connection: `git remote add REMOTE_NAME URL`
+- Check remote URL: `git remote get-url REMOTE_NAME`
+- Remove remote connection: `git remote remove REMOTE_NAME` 
+
+
+**Branch**
+
+- List all branches: `git branch -avv`
+- Create branch:
+    - `git checkout -b BRANCH`
+    - `git switch -c BRANCH`
+- Switch to branch: 
+    - `git checkout BRANCH`
+    - `git switch BRANCH`
+- Remove branch: `git branch -d BRANCH`
+
+
+### **_Docker_**
+
+**Image**
+
+- List all images: `docker images`
+- Build image: `docker build -t IMAGE_NAME:TAG PATH`
+- Remove image: `docker rmi -f IMAGE_NAME`
+- Remove all unused images: `docker image prune`
+- Remove all images: `docker image prune -a`
+
+**Volume**
+
+- List all volumes: `docker volume list`
+- Display information: `docker volume inspect VOLUME_NAME`
+- Create a volume: `docker volume create VOLUME_NAME`
+- Remove volume: `docker volume rm VOLUME_NAME`
+- Remove all unmounted volumes: `docker volume prune`
+
+
+**Container**
+
+- List all running containers: `docker ps`
+- List all containers: `docker ps -a`
+- Log container console: `docker logs CONTAINER_NAME`
+- Create and run a container: `docker run --name CONTAINER_NAME IMAGE`
+- Remove container `docker rm CONTAINER_NAME`
+- Remove all stopped containers: `docker container prune`
+
+**System**
+
+- Remove all unused data: `docker system prune`
+
+**Docker compose**
+
+- Create services: `docker-compose create`
+- Start services: `docker-compose start`
+- Create containers and immediately start services: `docker-compose up`
+- pause services: `docker-compose pause`
+- unpause services: `docker-compose unpause`
+- Stop services: `docker-compose stop`
+- Remove stopped service containers: `docker-compose rm`
+- Stop and remove containers: `docker-compose down`
+
+---
+
+
 ## **ZSH tips**
+> What is terminal and shell?
+>    - Terminal: An Interface to interact with the kernel, basically, it is a program that receive the input from and display the output to user.
+>    - Shell: A program that pass the command on to the operating system for execution
+> 
+> What is zsh?
+>    - Based on bash (bourne again shell)
+>    - Default shell on mac.
+> 
+> Why zsh?
+>    - It fits the POSIX (Portable Operating System Interface) standard, the portability of programs to different UNIX variants is guaranteed.
+>    - more interactive
+>    - more plugins (Oh-my-ZSH has a large community of contributors and users, you may find a bunch of useful tools in it.)
 
 <!-- list of awesome plugins we palowans love
 how color profile and understanding history is super helpful -->
@@ -72,9 +267,9 @@ how color profile and understanding history is super helpful -->
 > Change the theme of your z shell (after installing oh-my-zsh):
 > 1.  copy the name of the theme found [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)
 > 2.  open file: `~/.zshrc` and paste the name of the theme to the variable `ZSH_THEME`
->     Right at the moment, the author is using the theme "alien": https://github.com/eendroroy/alien (let's follow the guideline and customise, that's fuuuuuuuuuun! )
+>     Right at the moment, the author is using the theme "[alien](https://github.com/eendroroy/alien)" (let's follow the guideline and customise, that's fuuuuuuuuuun! )
 
-2.  Plugins (For more plugins: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins)
+2.  Plugins (Click [here](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins) for more plugins)
 
     - [dirhistory](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dirhistory)
     - [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git)
@@ -129,7 +324,6 @@ how color profile and understanding history is super helpful -->
 - `-h` = Display file sizes in human readable format
 - `-R` = List subdirectories recursively
 - `-r` = List in reverse order
-- `-S` = Sort by size
 - `-S` = Sort by size
 - `-t` = Sort by time
 - `-X` = Sort by extension
@@ -222,7 +416,7 @@ Group info file: `/etc/group`
 - `-m` = Create home directory for the new user if it does not exist
 - `-s PATH` = Set user's shell (Default shell is /bin/bash)
 
-`passwd USER_NAME` = Change user's password
+`sudo passwd USER_NAME` = Change user's password
 
 `sudo usermod [OPTIONS] USER_NAME` = Modify user
 
@@ -370,14 +564,14 @@ case $1 in
    # specify the case
 -s)
    # execute if the first parameter is -s
-echo "you have -s in args"
+    echo "you have -s in args"
    # the end of this case, skip the rest and jump to the end of the entire case block
 ;;
 
    # specify the case
 *)
    # execute if $1 match this case
-echo "Unknown"
+    echo "Unknown"
    # same as the above
 ;;
 
@@ -385,7 +579,7 @@ echo "Unknown"
 esac
 ```
 
-### **_Loop statement_**
+### **_Loop statements_**
 
 `for...in...do...done`
 
@@ -398,7 +592,7 @@ for arg in "$@"
    # start of the computation
 do
 
-echo $arg
+    echo $arg
 
    # end of the computation
 done
@@ -414,13 +608,11 @@ done
 
 - `-C -` = Resume download
 - `-I` = Display information of the response header
-- `-k` =
+- `-k` = Allow insecure connections when using SSL
 - `-O` = Save data to a file with it original name
 - `-o FILE_NAME` = Save data to a file with custom file name
 - `--retry NUMBER` = Set number of retries
 - `-#` = Show progress bar
-- `-t` =
-- `-x` =
 
 `wget URL` = Save the fetched data in a file
 
@@ -442,11 +634,9 @@ done
 
 ## **Git**
 
-
 What is Git?
 - Distributed version control system
 > Two types of version control systems: Centralised version control system vs Distributed version control system
-> 
 
 - Snapshot-based version control
 > Delta-based version control vs Snapshot-based version control
@@ -532,7 +722,7 @@ What is Git?
 - `--staged ` = Unstage staged changes
 
 `git commit [OPTIONS]` = Commit all changes (staged by `git add`)
-<!-- - `-F FILE` =  -->
+- `-F FILE` = use content from specific file as the commit message 
 - `-m COMMENT` = Commit with the given COMMENT
 - `--amend -m NEW_COMMENT` = Rewrite commit message without changing the snapshot
 
@@ -569,8 +759,8 @@ What is Git?
 
 ### **_Undo changes_**
 
-`git reset COMMIT_ID` = Set the current HEAD to the specific COMMIT_ID and undo all the commits after that version \
-`git reset HEAD~#` = Set the HEAD to the # number before the current HEAD
+`git reset [OPTIONS] COMMIT_ID` = Set the current HEAD to the specific COMMIT_ID and undo all the commits after that version \
+`git reset [OPTIONS] HEAD~#` = Set the HEAD to the # number before the current HEAD
 - `--soft` = Keep the undone commits being staged
 - `--hard` = Delete all undone commits
 
@@ -590,6 +780,8 @@ What is Git?
 `git checkout [OPTIONS] BRANCH_NAME` = Switch to branch BRANCH_NAME
 - `-b` = Create a new branch and switch to it
 
+`git switch [OPTIONS] BRANCH_NAME` = Switch to branch BRANCH_NAME
+- `-c` = Create a new branch and switch to it
 
 ### **_Merge conflict_**
 > NOTE: In a normal situation, git automatically merge contents from different sources for you as long as there is no conflict at all.
@@ -603,7 +795,6 @@ What is Git?
 > 2. communicate with your teammates about the conflict
 > 3. keep one of the changes and remove the other, or keep both of the changes
 > 4. preform `git merge`, `git commit` after editing
-
 
 ---
 
@@ -629,9 +820,9 @@ Implementations of containerisation
 
 `docker images` = List all images
 
-`docker build PATH [OPTIONS]` = Create an image from a dockerfile
+`docker build [OPTIONS] PATH` = Create an image from a dockerfile
 - `--no-cache` = Build image without using cache
-- `-t IMAGE_NAME:VERSION` = Custom image name and version
+- `-t IMAGE_NAME:TAG` = Custom image name and tag
 
 `docker rmi -f IMAGE_NAME` = Remove an image
 
@@ -643,7 +834,7 @@ Implementations of containerisation
 
 `docker load IMAGE_FILE` = Import image from image file
 
-### **_Volumes_**
+### **_Volume_**
 
 > Volume is an external filesystem connecting to container(s) that allows us storing data inside container persistently. Since it is an external system, it is not affected by the lifecycle of the container. In other words, the data is accessible after the container was stopped, killed or removed. A volume can be mounted to a container by adding `--mount` or `-v` to `docker run` or `docker create` commands.
 
@@ -659,12 +850,12 @@ Implementations of containerisation
 `docker volume prune [OPTIONS]` = Remove all unmounted local volumes
 - `-f` = Remove without confirmation
 
-permission
+<!-- TODO　permission -->
 
 ### **_From image to container_**
 
 `docker create [OPTIONS] IMAGE` = ONLY create a container from a docker image
-- `--name IMAGE_NAME` = Custom image name
+- `--name CONTAINER_NAME` = Custom container name
 
 `docker start CONTAINER_ID_or_NAME` = Run the containerised application (or re-start from the beginning)
 
@@ -697,7 +888,7 @@ permission
 `docker rm CONTAINER_ID_or_NAME` = Remove container
 - `-f` = Remove without confirmation
 
-`docker container prune [OPTIONS]` = Remove all unused containers
+`docker container prune [OPTIONS]` = Remove all stopped containers
 - `-f` = Remove without confirmation
 
 `docker logs CONTAINER_ID_or_NAME` = Log container console
@@ -716,6 +907,8 @@ permission
 - `--volumes` = Remove all unmounted volumes
 
 ### **_Context_**
+
+<!-- TODO -->
 
 ### **_Docker Compose_**
 
@@ -797,7 +990,9 @@ services: # Top-level element, all services go under this field
 ## References:
 
 0. Basic concepts  
-   [Terminal, Console, Shell and Command line](https://www.geeksforgeeks.org/difference-between-terminal-console-shell-and-command-line/)
+   [Terminal, Console, Shell and Command line](https://www.geeksforgeeks.org/difference-between-terminal-console-shell-and-command-line/) \
+   [Difference between shell console terminal](https://fossbytes.com/difference-between-shell-console-terminal/) \
+   [Console vs terminal vs shell](https://medium.com/@Abhishek_kumar_/console-vs-terminal-vs-shell-difference-betweeen-them-b9acd3270dae)
 
 1. General shell command  
    [Linuxcommand.org (highly recommanded)](https://linuxcommand.org/) \
@@ -847,3 +1042,4 @@ services: # Top-level element, all services go under this field
    [Docker volumes](https://phoenixnap.com/kb/docker-volumes)
 
 ##### Brought to you by Suen Lam ;)
+
