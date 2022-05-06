@@ -5,14 +5,13 @@
 0. [TL;DR](#tldr) 
 > If you are looking only for the syntax or the functionality, go directly to the TL;DR section. (Thanks Mr. Kierr Sunega for the suggestion)
 1. [User and Group management](#user-and-group-management)
-2. [File management](#file-management)
-3. [Useful utility](#useful-utility)
-4. [Shell Scripting](#shell-scripting)
+2. [Useful utility](#useful-utility)
+3. [Shell Scripting](#shell-scripting)
     - [Conditional Statements](#conditional-statements)
     - [Loop Statements](#loop-statements)
-5.  [Fetching data from internet](#fetching-data-from-internet)
+4.  [Fetching data from internet](#fetching-data-from-internet)
 
-6. [References](#references) 
+5. [References](#references) 
 
 ---
 
