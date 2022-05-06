@@ -4,17 +4,15 @@
 
 0. [TL;DR](#tldr) 
 > If you are looking only for the syntax or the functionality, go directly to the TL;DR section. (Thanks Mr. Kierr Sunega for the suggestion)
-1. [ZSH tips](#zsh-tips)
-2. [Path tips](#path-tips)
-3. [User and Group management](#user-and-group-management)
-4. [File management](#file-management)
-5. [Useful utility](#useful-utility)
-6. [Shell Scripting](#shell-scripting)
+1. [User and Group management](#user-and-group-management)
+2. [File management](#file-management)
+3. [Useful utility](#useful-utility)
+4. [Shell Scripting](#shell-scripting)
     - [Conditional Statements](#conditional-statements)
     - [Loop Statements](#loop-statements)
-7.  [Fetching data from internet](#fetching-data-from-internet)
+5.  [Fetching data from internet](#fetching-data-from-internet)
 
-8. [References](#references) 
+6. [References](#references) 
 
 ---
 
