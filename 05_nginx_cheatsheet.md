@@ -10,6 +10,7 @@
     - [Serve static file](#serve-static-file)
     - [Reverse proxy server](#reverse-proxy-server)
     - [Load Balancing](#load-balancing)
+    - [Cache](#cache)
 6. [References](#references) 
 
 ---
@@ -22,9 +23,7 @@
 >       - Parameters are indicated in uppercase.
 >       - Parameters inside square brackets "[ ]" are optional.
 >
-> 2. You may know more about the nginx command by typing `command -h` or `man command`
->     - for example:
->       - `nginx -h` or `man nginx` displays the user manual of command `nginx`
+> 2. You may know more about the nginx command by typing `nginx -h` or `man nginx`
 
 
 ---
@@ -209,14 +208,12 @@ http {
         server_name example.com www.example.com;
 
         location / {
+
             # Specify to which server the requests will be passed, 
             proxy_pass http://apps;
 
-            # Specify the http protocol version (default is 1.0)
-            proxy_http_version 1.1;
+            # You may import proxy configuration from /etc/nginx/proxy_params
             
-            # Set the request header passed to the proxied server
-            proxy_set_header HOST $host; # The value of $host is the primary server name if the host field is not present in the request
         }
 
         location /asset/ {
@@ -235,8 +232,30 @@ http {
             auth_basic_user_file /etc/nginx/auth/passwd;
 	    }
     }
-
     ...
+}
+
+
+# /etc/nginx/proxy_params
+
+# Specify the http protocol version (default is 1.0)
+proxy_http_version 1.1;
+
+# Set the request header passed to the proxied server
+proxy_set_header HOST $host:$proxy_port; # The value of $host is the primary server name if the host field is not present in the request
+
+# The value of $remote_addr is the client IP address
+proxy_set_header X-Real-IP $remote_addr;
+
+# The value of $remote_port is the client PORT
+proxy_set_header X-Real-PORT $remote_port;
+
+# This is especially useful if there are multiple proxy servers. $proxy_add_x_forwarded_for stores all the ip addresses the request chain of the client and of the previous proxy servers.
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+# Identify the protocol (HTTP or HTTPS)
+proxy_set_header X-Forwarded-Proto $scheme;
+
 ```
 
 ### **Load Balancing**
@@ -280,8 +299,8 @@ http {
         # Distribute requests based on the defined key
     upstream apps {
         hash $remote_addr consistent;   # Hash the full ip address 
-        server 127.0.0.1:8000  weight= 1; 
-        server 127.0.0.1:8080  weight= 2;
+        server 127.0.0.1:8000 weight= 1; 
+        server 127.0.0.1:8080 weight= 2;
         server 127.0.0.1:8100 down;   # marked with down for temporary suspension
     }
 
@@ -291,9 +310,9 @@ http {
         # Distribute requests based on client ip addresses (hash only the first three octets of the client ipv4 address and entire ipv6 address)
     upstream apps {
         ip_hash;
-        server 127.0.0.1:8000  weight= 1; 
-        server 127.0.0.1:8080  weight= 2;
-        server 127.0.0.1:8100 down;   # marked with down for temporary suspension
+        server 127.0.0.1:8000 weight= 1; 
+        server 127.0.0.1:8080 weight= 2;
+        server 127.0.0.1:8100 down;     # marked with down for temporary suspension
     }
 
 # or
@@ -302,9 +321,9 @@ http {
         # Pass the requests to the server with the least number of connections
     upstream apps {
         least_conn;
-        server 127.0.0.1:8000 weight= 1;
-        server 127.0.0.1:8080 weight= 2;
-        server 127.0.0.1:8100 weight= 3;
+        server 127.0.0.1:8000;
+        server 127.0.0.1:8080;
+        server 127.0.0.1:8100;
     }
 
 # or
@@ -318,16 +337,15 @@ http {
 
         least_time last_byte;   # count the time of receive full response
 
-        server 127.0.0.1:8000 weight= 1;
-        server 127.0.0.1:8080 weight= 2;
-        server 127.0.0.1:8100 weight= 3;
+        server 127.0.0.1:8000;
+        server 127.0.0.1:8080;
+        server 127.0.0.1:8100;
     }
 
 # or
 
     # Random: 
         # Randomly distribute the request to server
-         
     upstream apps {
         random;
 
@@ -336,16 +354,66 @@ http {
         random two [METHOD]; # Randomly pick two servers and distribute the request to one by using the least connection method as the default method (or using least time by specifying least_time=header or least_time=last_byte)
 
         server 127.0.0.1:8000 weight= 1;
-        server 127.0.0.1:8080 weight= 2;
+        server 127.0.0.1:8080 weight= 2; 
         server 127.0.0.1:8100 weight= 3;
     }
-
 }
 
 ...
-
 ```
+### **Cache**
 
+```nginx
+
+http {
+
+    # Set the cache path for the proxy server
+    # Can also be set in server or location context
+    proxy_cache_path /var/cache/nginx levels=1:2 use_temp_path=on keys_zone=my_custom_cache:10m inactive=60m max_size=50g min_free=500m;
+    # "levels": defines the hierarchy level of cache directory
+    # "use_temp_path": put the temporary files in the directory set by proxy_temp_path directive. If the sue_temp_path is set to "off", the temporary files will be put in the cache directory.
+    # "keys_zone": defines name and size of the shared memory zone
+    # "inactive": cached data will be removed if not accessed during the time limit defined (is set to 10 minutes by default).
+    # "max_size": defines the maximum cache size
+    # "min_free": defines the minimum free space
+
+    server {
+    
+        ...
+
+        # Use the cache zone "my_custom_cache" defined by keys_zone parameter in proxy_cache_path directive
+        # or set it to off to disable the cache function
+        proxy_cache my_custom_cache;
+
+        # Specify the directory for storing the temporary files received
+        # the last two integer set the hierarchy 
+        proxy_temp_path  /spool/nginx/proxy_temp 1 2;
+
+        # Cache are stored as a key-value pair in which the request is the key and the response the value. This directive allows you to define the key for the cache
+        proxy_cache_key $scheme$proxy_host$request;
+
+        # Specify under what circumstances a stale cached response is used
+        proxy_cache_use_stale error timeout invalid_header http_403 http_503;
+        
+        # By default, only responses with status code 200, 301, 302 will be cached. 
+        # You may specify what responses to be cached and the caching time with this directive
+        proxy_cache_valid 404 5m;
+        proxy_cache_valid 200 302 30m;
+        proxy_cache_valid 301 1h;
+
+        # Specify what methods to be cached
+        proxy_cache_methods GET HEAD POST;
+
+        # Set how many times the same request should be made for caching the response
+        proxy_cache_min_uses 5;
+
+        location {
+
+            ...
+
+    }
+}
+```
 ---
 
 ## References:
