@@ -92,7 +92,9 @@
 > 
 > `/etc/nginx/nginx/conf.d`
 > - Since every config file in this directory must end with the extension `.conf` for being included in the main configuration file `/etc/nginx/nginx.conf`, storing configuration files here allows you to manage the files more intuitively. Unlike the former practice in which the available and enabled files are separated into two directories, all files are stored in one place. You can simply add an additional suffix like `.off` to a file in order to exclude the service.
->
+> 
+> **_Use `include` directive to enhance the scalability and maintainability of the configuration_**
+> 
 > Online Nginx config generator: [NGINXConfig](https://www.digitalocean.com/community/tools/nginx)
 
 
@@ -213,7 +215,6 @@ http {
             proxy_pass http://apps;
 
             # You may import proxy configuration from /etc/nginx/proxy_params
-            
         }
 
         location /asset/ {
@@ -358,13 +359,11 @@ http {
         server 127.0.0.1:8100 weight= 3;
     }
 }
-
 ...
 ```
 ### **Cache**
 
 ```nginx
-
 http {
 
     # Set the cache path for the proxy server
