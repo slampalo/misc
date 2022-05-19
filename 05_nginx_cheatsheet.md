@@ -106,8 +106,8 @@ http {
     server {
         # Specify the port you want it to listen, default is 80
         # [::] is the IPv6 address, equivalent to 0000:0000:0000:0000:0000:0000:0000:0000
-        listen 80;
-        listen [::]80;
+        listen 9990;
+        listen [::]9990;
 
         # Process request if the Host request header matches this server name
         server_name example.com www.example.com;
@@ -199,9 +199,9 @@ http {
 http {
 
     upstream apps {
-        server 127.0.0.1:8000;
-        server 127.0.0.1:8080;
-        server 127.0.0.1:8100;
+        server 127.0.0.2:8001;
+        server 127.0.0.3:8082;
+        server 127.0.0.4:8103;
     }
 
     server {
@@ -279,9 +279,9 @@ http {
     # Round robin (Default method): 
         # Request is distributed to each server in turn.
     upstream apps {
-        server 127.0.0.1:8000;
-        server 127.0.0.1:8080;
-        server 127.0.0.1:8100;
+        server 127.0.0.1:8001;
+        server 127.0.0.2:8002;
+        server 127.0.0.3:8003;
     }
 
 # or
@@ -289,9 +289,9 @@ http {
     # Weighted round robin: 
         # Distribute requests proportionally.
     upstream apps {
-        server 127.0.0.1:8000 weight= 1;
-        server 127.0.0.1:8080 weight= 2;
-        server 127.0.0.1:8100 weight= 3;
+        server 127.0.0.1:8001 weight= 1;
+        server 127.0.0.2:8002 weight= 2;
+        server 127.0.0.3:8003 weight= 3;
     }
 
 # or
@@ -300,9 +300,9 @@ http {
         # Distribute requests based on the defined key
     upstream apps {
         hash $remote_addr consistent;   # Hash the full ip address 
-        server 127.0.0.1:8000 weight= 1; 
-        server 127.0.0.1:8080 weight= 2;
-        server 127.0.0.1:8100 down;   # marked with down for temporary suspension
+        server 127.0.0.1:8001 weight= 1; 
+        server 127.0.0.2:8002 weight= 2;
+        server 127.0.0.3:8003 down;   # marked with down for temporary suspension
     }
 
 # or
@@ -311,9 +311,9 @@ http {
         # Distribute requests based on client ip addresses (hash only the first three octets of the client ipv4 address and entire ipv6 address)
     upstream apps {
         ip_hash;
-        server 127.0.0.1:8000 weight= 1; 
-        server 127.0.0.1:8080 weight= 2;
-        server 127.0.0.1:8100 down;     # marked with down for temporary suspension
+        server 127.0.0.1:8001 weight= 1; 
+        server 127.0.0.2:8002 weight= 2;
+        server 127.0.0.3:8003 down;     # marked with down for temporary suspension
     }
 
 # or
@@ -322,9 +322,9 @@ http {
         # Pass the requests to the server with the least number of connections
     upstream apps {
         least_conn;
-        server 127.0.0.1:8000;
-        server 127.0.0.1:8080;
-        server 127.0.0.1:8100;
+        server 127.0.0.1:8001;
+        server 127.0.0.2:8002;
+        server 127.0.0.3:8003;
     }
 
 # or
@@ -338,9 +338,9 @@ http {
 
         least_time last_byte;   # count the time of receive full response
 
-        server 127.0.0.1:8000;
-        server 127.0.0.1:8080;
-        server 127.0.0.1:8100;
+        server 127.0.0.1:8001;
+        server 127.0.0.2:8002;
+        server 127.0.0.3:8003;
     }
 
 # or
@@ -354,9 +354,9 @@ http {
         
         random two [METHOD]; # Randomly pick two servers and distribute the request to one by using the least connection method as the default method (or using least time by specifying least_time=header or least_time=last_byte)
 
-        server 127.0.0.1:8000 weight= 1;
-        server 127.0.0.1:8080 weight= 2; 
-        server 127.0.0.1:8100 weight= 3;
+        server 127.0.0.1:8001 weight= 1;
+        server 127.0.0.2:8002 weight= 2; 
+        server 127.0.0.3:8003 weight= 3;
     }
 }
 ...
