@@ -87,7 +87,7 @@ how color profile and understanding history is super helpful -->
     - [Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 
 > Install oh-my-zsh:
-> - Type in the terminal (make sure it is using the z shell): `sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)`
+> - Type in the terminal (make sure it is using the z shell): `sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 > 
 > Change the theme of your z shell (after installing oh-my-zsh):
 > 1.  copy the name of the theme found [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)
