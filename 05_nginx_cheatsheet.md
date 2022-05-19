@@ -1,4 +1,4 @@
-# **Palowan Guru Cheatsheet - Nginx **
+# **Palowan Guru Cheatsheet - Nginx**
 
 ## **Table of Contents**
 
