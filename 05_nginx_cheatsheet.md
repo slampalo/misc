@@ -277,7 +277,7 @@ http {
 ...
 
     # Round robin (Default method): 
-        # Request is distributed to each server in turn.
+        # Requests are distributed to each server in turn.
     upstream apps {
         server 127.0.0.1:8001;
         server 127.0.0.2:8002;
