@@ -33,13 +33,13 @@
 ## **TL;DR**
 
 
-### **_Zsh_**
+**_Zsh tips_**
 
 - Start Z-shell: `zsh`
 - Restart Z-shell: `exec zsh`
 
 
-### **_Path_**
+**_Path tips_**
 
 - Print working directory: `pwd`
 - List all entries and sort by time in descending order: `ls -alht`
@@ -47,7 +47,7 @@
 - Change working directory: `cd PATH`
 
 
-### **_File_**
+**_File management_**
 
 - Check file type: `file PATH`
 - Check file status: `stat PATH`
