@@ -93,7 +93,7 @@ do
 done
 ```
 
-### **_Fetching data from internet_**
+**_Fetching data from internet_**
 
 - Display fetched data: `curl URL`
 - Download data:
@@ -153,14 +153,26 @@ Group info file: `/etc/group`
 
 `$` = Articulate variable
 
-`|` = Pipeline connects two commands, pass the output of the former as the input of the latter
-
+`|` = Pipeline connects two commands, pass the output of the former as the **_input_** of the latter
 > For example:
 >
 > - `ls -al ~ | grep .git`
 > - `ls -alr ~ | more`
 
-<!-- `awk` TODO -->
+
+`xargs` = Used with `|`, pass the piped output as the **_argument_** to the latter command
+- `-I TOKEN` = Replace string with token
+- `-p` = Interactive mode
+
+
+> For example:
+> 
+> - `find -type f . | xargs wc` = Recursively list all files of current directory and pass the filenames to `wc` to count the numbers of words, characters and lines of every file.
+> - `echo "a b c" | xargs touch` = Create three files named "a", "b" and "c" respectively. 
+
+
+<!-- awk -->
+<!-- TODO -->
 
 `grep [OPTIONS] "PATTERN" FILE` = Search the file for lines containing particular pattern and print it on terminal (or you may use I/O redirection symbol: ">" and ">>" to write the results to file)
 
@@ -176,12 +188,11 @@ Group info file: `/etc/group`
 > - `-f` = case insensitive
 > - `-n` = sort in numeric order
 > - `-r` = reverse sorting order
-
+> 
 > For example:
 >
 > - `ls -alR ~| grep .json | sort -r | more`
 
-<!-- `xargs` TODO -->
 
 `eval $COMMAND_VARIABLES` = Run shell command stored in variable(s)
 
