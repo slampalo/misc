@@ -66,7 +66,7 @@
 ---
 
 
-**ZSH tips**
+## **ZSH tips**
 > What is terminal and shell?
 >    - Terminal: An Interface to interact with the kernel, basically, it is a program that receive the input from and display the output to user.
 >    - Shell: A program that pass the command on to the operating system for execution
