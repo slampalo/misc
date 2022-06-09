@@ -133,18 +133,18 @@ how color profile and understanding history is super helpful -->
 > Create your own function:
 > 1. nano ~/.zshrc` (nano is a terminal editor, you are free to learn or use others like vim, neovim, emacs)
 > 2. add to the document:
-
-    add () {
-        SUM=0
-
-        for number in $@
-        do
-            SUM=$(($SUM+$number))
-        done
-
-        echo $SUM
-    }
-
+>
+>        add () {
+>            SUM=0
+>    
+>            for number in $@
+>            do
+>                SUM=$(($SUM+$number))
+>            done
+>    
+>            echo $SUM
+>        }
+>    
 > 3. leave and save the changes
 > 4. type `source ~/.zshrc` to reload the profile
 > 5. type `add 4 5` and see the answer.
@@ -154,8 +154,8 @@ how color profile and understanding history is super helpful -->
     - For example: “/u/lo/b” --> press tab --> “/usr/local/bin”
 
 6.  Select listed options with arrow keys
-
 7.  `exec zsh` = Restart zsh
+
 
 ---
 
@@ -287,21 +287,12 @@ how color profile and understanding history is super helpful -->
    - [Unix Tutorial](https://afni.nimh.nih.gov/pub/dist/edu/data/CD.expanded/AFNI_data6/unix_tutorial/index.html#)
 
 2. ZSH  
-<<<<<<< HEAD:01_zsh_cheatsheet_1.md
-   [oh-my-zsh plugin](https://github.com/ohmyzsh/ohmyzsh) \
-   [Top 10 ZSH plugins](https://travis.media/top-10-oh-my-zsh-plugins-for-productive-developers/) \
-   [ZSH vs Bash](https://www.educba.com/zsh-vs-bash/) \
-   [ZSH vs Bash - UNIX shell in comparison](https://kruschecompany.com/zsh-vs-bash-unix-shell/) \
-   [Practical differences between ZSH and bash](https://apple.stackexchange.com/questions/361870/what-are-the-practical-differences-between-bash-and-zsh) \
-   [Why use ZSH](https://www.howtogeek.com/362409/what-is-zsh-and-why-should-you-use-it-instead-of-bash/)
-=======
    - [oh-my-zsh plugin](https://github.com/ohmyzsh/ohmyzsh)
    - [Top 10 ZSH plugins](https://travis.media/top-10-oh-my-zsh-plugins-for-productive-developers/)
    - [ZSH vs Bash](https://www.educba.com/zsh-vs-bash/)
    - [ZSH vs Bash - UNIX shell in comparison](https://kruschecompany.com/zsh-vs-bash-unix-shell/)
    - [Practical differences between ZSH and bash](https://apple.stackexchange.com/questions/361870/what-are-the-practical-differences-between-bash-and-zsh)
    - [Why use ZSH](https://www.howtogeek.com/362409/what-is-zsh-and-why-should-you-use-it-instead-of-bash/)
->>>>>>> 7674373611bedae318b908225e7ada801102ebce:101_zsh_cheatsheet_1.md
 
 3. File management
    - [chmod](https://tutorialshut.com/file-permissions-chmod-command/)
