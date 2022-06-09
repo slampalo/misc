@@ -2,35 +2,36 @@
 
 ## **Table of Contents**
 
-0. [TL;DR](#tldr) 
-> If you are looking only for the syntax or the functionality, go directly to the TL;DR section. (Thanks Mr. Kierr Sunega for the suggestion)
+0. [TL;DR](#tldr)
+   > If you are looking only for the syntax or the functionality, go directly to the TL;DR section. (Thanks Mr. Kierr Sunega for the suggestion)
 1. [User and Group management](#user-and-group-management)
 2. [Useful utility](#useful-utility)
 3. [Shell Scripting](#shell-scripting)
-    - [Conditional Statements](#conditional-statements)
-    - [Loop Statements](#loop-statements)
-4.  [Fetching data from internet](#fetching-data-from-internet)
+   - [Conditional Statements](#conditional-statements)
+   - [Loop Statements](#loop-statements)
+4. [Fetching data from internet](#fetching-data-from-internet)
 
-5. [References](#references) 
+5. [References](#references)
 
 ---
 
 > **NOTES**
-> 
-> 1. For the sake of consistency, here is the structure of commands in this cheat sheet: 
->     - `command [OPTIONS] PARAMETER`
->       - Commands are indicated in lowercase.
->       - Parameters are indicated in uppercase.
->       - Parameters inside square brackets "[ ]" are optional.
+>
+> 1. For the sake of consistency, here is the structure of commands in this cheat sheet:
+>
+>    - `command [OPTIONS] PARAMETER`
+>      - Commands are indicated in lowercase.
+>      - Parameters are indicated in uppercase.
+>      - Parameters inside square brackets "[ ]" are optional.
 >
 > 2. You may know more about the command by typing `command --help` or `man command`
->     - for example:
->       - `useradd --help` or `man useradd` displays the user manual of command `useradd`
->       - `man echo` for the user manual of command echo
+>
+>    - for example:
+>      - `useradd --help` or `man useradd` displays the user manual of command `useradd`
+>      - `man echo` for the user manual of command echo
 >
 > 3. Most of the ZSH command accepts compound options
->     - for example: `ls -alt` combines three options which are `-a (list all including hidden entries )`, `-l (view in long listing format)` and `-t (sort by time)`.
-
+>    - for example: `ls -alt` combines three options which are `-a (list all including hidden entries )`, `-l (view in long listing format)` and `-t (sort by time)`.
 
 ---
 
@@ -53,16 +54,18 @@
 
 **_Shell scripting_**
 
-- Conditionals: 
+- Conditionals:
+
 ```sh
 if CONDITIONAL_EXPRESSION; then
-    ACTIONS 
+    ACTIONS
 elif CONDITIONAL_EXPRESSION; then
     ACTIONS
 else
     ACTIONS
 fi
 ```
+
 ```sh
 case SUBJECT in
 
@@ -82,6 +85,7 @@ esac
 ```
 
 - Loop:
+
 ```sh
 for ELEMENT in ITERABLE
 do
@@ -92,11 +96,11 @@ done
 **_Fetching data from internet_**
 
 - Display fetched data: `curl URL`
-- Download data: 
-    - `curl -O URL`
-    - `curl -o FILE_NAME URL`
-    - `wget --progress=bar URL`
-    - `wget --progress=bar -O FILE_NAME URL`
+- Download data:
+  - `curl -O URL`
+  - `curl -o FILE_NAME URL`
+  - `wget --progress=bar URL`
+  - `wget --progress=bar -O FILE_NAME URL`
 
 ---
 
@@ -111,6 +115,7 @@ Group info file: `/etc/group`
 `getent group` = List all groups
 
 `sudo useradd [OPTIONS] USER_NAME` = Create user
+
 - `-d PATH` = Specify home directory for the new user
 - `-m` = Create home directory for the new user if it does not exist
 - `-s PATH` = Set user's shell (Default shell is /bin/bash)
@@ -126,6 +131,7 @@ Group info file: `/etc/group`
 `su USERNAME` = Switch user (By using `sudo`, you may login without password.)
 
 `sudo userdel [OPTIONS] USER_NAME` = Remove user
+
 - `-r` = Remove user including mail and home directory
 
 `groups` = List groups that the user is currently in
@@ -149,6 +155,7 @@ Group info file: `/etc/group`
 
 `|` = Pipeline connects two commands, pass the output of the former as the **_input_** of the latter
 > For example:
+>
 > - `ls -al ~ | grep .git`
 > - `ls -alr ~ | more`
 
@@ -188,8 +195,9 @@ Group info file: `/etc/group`
 
 
 `eval $COMMAND_VARIABLES` = Run shell command stored in variable(s)
+
 > For example:
-> 
+>
 > 1. `command="ls -alR | grep .json | more"` \
 > 2. run `eval $command` (equivalent to run `ls -alR | grep .json | more"`)
 
@@ -223,23 +231,23 @@ Group info file: `/etc/group`
 Use the following operators to constructing expression:
 
 - Logical operators
-   - `!` = Negation
-   - `-a` = And
-   - `-o` = Inclusive or (at least one expression is true)
+  - `!` = Negation
+  - `-a` = And
+  - `-o` = Inclusive or (at least one expression is true)
 - Mathematical operators
-   - `-eq` = Numerically Equivalent
-   - `-ne` = Numerically non-equivalent
-   - `-gt` = Greater than
-   - `-ge` = Greater than or equal
-   - `-lt` = Less than
-   - `-le` = Less than or equal
+  - `-eq` = Numerically Equivalent
+  - `-ne` = Numerically non-equivalent
+  - `-gt` = Greater than
+  - `-ge` = Greater than or equal
+  - `-lt` = Less than
+  - `-le` = Less than or equal
 - String comparing
-   - `=` = Two strings are equivalent
-   - `!=` = Two strings are not equivalent
+  - `=` = Two strings are equivalent
+  - `!=` = Two strings are not equivalent
 - File checking
-   - `-e` = File exists
-   - `-d` = File exists and is a directory
-   - `-f` = File exists and is a regular file
+  - `-e` = File exists
+  - `-d` = File exists and is a directory
+  - `-f` = File exists and is a regular file
 
 `if...then...elif...then...else...fi`
 
@@ -345,21 +353,25 @@ done
 
 ## References:
 
-1. Commands  
-   [awk](https://phoenixnap.com/kb/awk-command-in-linux)
+1. User and Group management
 
-2. User and Group management  
-   [How to create users in linux using useradd command](https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/) \
-   [Linux user group management](https://www.redhat.com/sysadmin/linux-user-group-management) \
-   [local group accounts](https://www.redhat.com/sysadmin/local-group-accounts) \
-   [Managing users and groups](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-managing_users_and_groups)
+   - [How to create users in linux using useradd command](https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/)
+   - [Linux user group management](https://www.redhat.com/sysadmin/linux-user-group-management)
+   - [local group accounts](https://www.redhat.com/sysadmin/local-group-accounts)
+   - [Managing users and groups](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-managing_users_and_groups)
 
-3. Fetching data from internet  
-   [wget vs crul](https://www.linuxfordevices.com/tutorials/linux/wget-vs-curl) \
-   [wget](https://www.hostinger.com/tutorials/wget-command-examples/#Using_Wget_Command_to_Download_Single_Files)
+2. Useful utility
 
-4. Shell script  
-   [Writing shell scripts](https://linuxcommand.org/lc3_writing_shell_scripts.php)
+   - [50 most popular linux commands](https://www.freecodecamp.org/news/the-linux-commands-handbook/)
+   - [50 most popular linux commands (Video)](https://www.youtube.com/watch?v=ZtqBQ68cfJc)
+   - [awk](https://phoenixnap.com/kb/awk-command-in-linux)
+
+3. Fetching data from internet
+
+   - [wget vs crul](https://www.linuxfordevices.com/tutorials/linux/wget-vs-curl)
+   - [wget](https://www.hostinger.com/tutorials/wget-command-examples/#Using_Wget_Command_to_Download_Single_Files)
+
+4. Shell script
+   - [Writing shell scripts](https://linuxcommand.org/lc3_writing_shell_scripts.php)
 
 ##### Brought to you by Suen Lam ;)
-

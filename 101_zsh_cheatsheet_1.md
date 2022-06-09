@@ -274,27 +274,36 @@ how color profile and understanding history is super helpful -->
 ## References:
 
 0. Basic concepts  
-   [Terminal, Console, Shell and Command line](https://www.geeksforgeeks.org/difference-between-terminal-console-shell-and-command-line/) \
-   [Difference between shell console terminal](https://fossbytes.com/difference-between-shell-console-terminal/) \
-   [Console vs terminal vs shell](https://medium.com/@Abhishek_kumar_/console-vs-terminal-vs-shell-difference-betweeen-them-b9acd3270dae)
+   - [Terminal, Console, Shell and Command line](https://www.geeksforgeeks.org/difference-between-terminal-console-shell-and-command-line/)
+   - [Difference between shell console terminal](https://fossbytes.com/difference-between-shell-console-terminal/)
+   - [Console vs terminal vs shell](https://medium.com/@Abhishek_kumar_/console-vs-terminal-vs-shell-difference-betweeen-them-b9acd3270dae)
 
 1. General shell command  
-   [Linuxcommand.org (highly recommanded)](https://linuxcommand.org/) \
-   [Java T point - Linux/Unix Tutorial](https://www.javatpoint.com/linux-tutorial) \
-   [Tutorials Point - UNIX / LINUX Tutorial](https://www.tutorialspoint.com/unix/index.htm) \
-   [Cardiff School of Computer Science & Informatics - Linux Shell Commands](https://docs.cs.cf.ac.uk/notes/linux-shell-commands/) \
-   [Computer Hope - Unix and Linux commands help](https://www.computerhope.com/unix.htm) \
-   [Unix Tutorial](https://afni.nimh.nih.gov/pub/dist/edu/data/CD.expanded/AFNI_data6/unix_tutorial/index.html#)
+   - [Linuxcommand.org (highly recommanded)](https://linuxcommand.org/)
+   - [Java T point - Linux/Unix Tutorial](https://www.javatpoint.com/linux-tutorial)
+   - [Tutorials Point - UNIX / LINUX Tutorial](https://www.tutorialspoint.com/unix/index.htm)
+   - [Cardiff School of Computer Science & Informatics - Linux Shell Commands](https://docs.cs.cf.ac.uk/notes/linux-shell-commands/)
+   - [Computer Hope - Unix and Linux commands help](https://www.computerhope.com/unix.htm)
+   - [Unix Tutorial](https://afni.nimh.nih.gov/pub/dist/edu/data/CD.expanded/AFNI_data6/unix_tutorial/index.html#)
 
 2. ZSH  
+<<<<<<< HEAD:01_zsh_cheatsheet_1.md
    [oh-my-zsh plugin](https://github.com/ohmyzsh/ohmyzsh) \
    [Top 10 ZSH plugins](https://travis.media/top-10-oh-my-zsh-plugins-for-productive-developers/) \
    [ZSH vs Bash](https://www.educba.com/zsh-vs-bash/) \
    [ZSH vs Bash - UNIX shell in comparison](https://kruschecompany.com/zsh-vs-bash-unix-shell/) \
    [Practical differences between ZSH and bash](https://apple.stackexchange.com/questions/361870/what-are-the-practical-differences-between-bash-and-zsh) \
    [Why use ZSH](https://www.howtogeek.com/362409/what-is-zsh-and-why-should-you-use-it-instead-of-bash/)
+=======
+   - [oh-my-zsh plugin](https://github.com/ohmyzsh/ohmyzsh)
+   - [Top 10 ZSH plugins](https://travis.media/top-10-oh-my-zsh-plugins-for-productive-developers/)
+   - [ZSH vs Bash](https://www.educba.com/zsh-vs-bash/)
+   - [ZSH vs Bash - UNIX shell in comparison](https://kruschecompany.com/zsh-vs-bash-unix-shell/)
+   - [Practical differences between ZSH and bash](https://apple.stackexchange.com/questions/361870/what-are-the-practical-differences-between-bash-and-zsh)
+   - [Why use ZSH](https://www.howtogeek.com/362409/what-is-zsh-and-why-should-you-use-it-instead-of-bash/)
+>>>>>>> 7674373611bedae318b908225e7ada801102ebce:101_zsh_cheatsheet_1.md
 
-3. Commands  
-   [chmod](https://tutorialshut.com/file-permissions-chmod-command/)
+3. File management
+   - [chmod](https://tutorialshut.com/file-permissions-chmod-command/)
 
 ##### Brought to you by Suen Lam ;)

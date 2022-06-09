@@ -5,7 +5,7 @@
 1. [OSI Model](#osi-model)
 2. [Http](#http)
 3. [Web server](#web-server)
-
+4. [References](#references) 
 ---
 
 ## **OSI Model**
@@ -18,18 +18,41 @@
   - Media layers (hardware)
 
     1. Physical layer
+       - Transfer raw data: 0s and 1s
        - Hardwares: Network adapters, Ethernet, Repeaters, Networking hubs
     2. Data Link layer
+       - Encapsulate packets from Network layer into frames and send them bit by bit over the underlying hardware
+       - Receive signals from Physical layer and reassemble them into frames
+       - MAC (Media Access Control) 
+          - Manage connections between devices
+          - Define permissions for transferring data
+       - LLC (Logical Link Control)
+          - Error checking
+          - Synchronize frames
     3. Network layer
-       - Protocol: IP
+       - Divide segments from Transport layer into packets 
+       - Reassemble packets from Data Link layer into segments
+       - Determine the best path for routing packets
+       - Protocols: IP
 
   - Host layers (software)
 
     4. Transport layer
+       - Divide data from Session layer into segments
+       - Reassemble segments from Network layer
+       - flow control - 
+       - error handling - check if the data received correctly
        - Protocols: TCP
     5. Session layer
+       - Manage the communication
+         - Create, maintain and close communication channels, called sessions
+       - Keep track the progress of data transfer
     6. Presentation layer
+       - Receive data from application layer and prepare for session layer
+       - Define how two ends encrypt/ encode/ compress
     7. Application layer
+       - The layer closest to end-user
+       - Provide protocols for transmitting information
        - Protocols: HTTP, HTTPS, FTP, DNS, POP3
 
 - Two types of interaction
@@ -129,7 +152,6 @@ You have to add those headers to the response header for enabling the access fro
 - HTTP + TLS (or SSL) protocol
 - 443 is the common port for HTTPS traffic.
  
-
 
 ---
 
